@@ -223,6 +223,7 @@ const ListingTableRow: FC<ListingTableRowProps> = ({
               <Text style="subtitle2">{expiration}</Text>
             </Flex>
           </a>
+          {/*
           {isOwner ? (
             <CancelListing
               listingId={listing?.id as string}
@@ -281,7 +282,7 @@ const ListingTableRow: FC<ListingTableRowProps> = ({
               }}
               buttonChildren="Buy Now"
             />
-          )}
+          )}*/}
         </Flex>
       </Flex>
     )
@@ -361,6 +362,7 @@ const ListingTableRow: FC<ListingTableRowProps> = ({
       </TableCell>
       <TableCell>
         <Flex justify="end">
+          {/*
           {isOwner ? (
             <CancelListing
               listingId={listing?.id as string}
@@ -419,7 +421,7 @@ const ListingTableRow: FC<ListingTableRowProps> = ({
               }}
               buttonChildren="Buy Now"
             />
-          )}
+          )}*/}
         </Flex>
       </TableCell>
     </TableRow>

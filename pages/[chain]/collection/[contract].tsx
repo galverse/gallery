@@ -198,6 +198,16 @@ const CollectionPage: NextPage<Props> = ({ id, ssr }) => {
         return
       }
 
+      const tokenId = reservoirEvent.data.token.tokenId.toString() || '' // Convert the ID to a string
+if (
+    tokenSearchQuery &&
+    tokenSearchQuery.length > 0 &&
+    !tokenId.includes(tokenSearchQuery)  // Match against tokenId
+) {
+    return
+}
+console.log(reservoirEvent.data.token);
+
       let hasChange = false
 
       const newTokens = [...tokens]
@@ -487,7 +497,7 @@ const CollectionPage: NextPage<Props> = ({ id, ssr }) => {
               </Flex>
               <Flex align="center">
                 <Flex css={{ alignItems: 'center', gap: '$3' }}>
-                  {nativePrice ? (
+                {/*  {nativePrice ? (
                     <Sweep
                       collectionId={collection.id}
                       openState={isSweepRoute ? sweepOpenState : undefined}
@@ -524,7 +534,7 @@ const CollectionPage: NextPage<Props> = ({ id, ssr }) => {
                       buttonCss={{ '@lg': { order: 2 } }}
                       mutate={mutate}
                     />
-                  ) : null}
+                    ) : null} */}
                   {/* Collection Mint */}
                   {mintData ? (
                     <Mint
@@ -570,6 +580,7 @@ const CollectionPage: NextPage<Props> = ({ id, ssr }) => {
                       mutate={mutate}
                     />
                   ) : null}
+                  {/*
                   <CollectionOffer
                     collection={collection}
                     buttonChildren={<FontAwesomeIcon icon={faHand} />}
@@ -577,15 +588,16 @@ const CollectionPage: NextPage<Props> = ({ id, ssr }) => {
                     buttonCss={{ px: '$4' }}
                     mutate={mutate}
                   />
+                    */}
                 </Flex>
               </Flex>
             </Flex>
 
-            <TabsList css={{ mt: 0 }}>
+        {/*    <TabsList css={{ mt: 0 }}>
               <TabsTrigger value="items">Items</TabsTrigger>
               <TabsTrigger value="details">Details</TabsTrigger>
               <TabsTrigger value="activity">Activity</TabsTrigger>
-            </TabsList>
+                  </TabsList> */}
 
             <TabsContent value="items">
               <Flex
@@ -644,7 +656,7 @@ const CollectionPage: NextPage<Props> = ({ id, ssr }) => {
                           </Box>
                           <Input
                             css={{ pl: 42 }}
-                            placeholder="Search by token name"
+                            placeholder="Search by token ID"
                             onChange={(e) => {
                               setTokenSearchQuery(e.target.value)
                             }}

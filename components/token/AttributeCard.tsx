@@ -38,7 +38,7 @@ export default ({ attribute, collectionTokenCount, collectionId }: Props) => {
           height: '100%',
         }}
       >
-        <Text style="subtitle3" color="subtle" ellipsify>
+        <Text style="h5" color="white" ellipsify>
           {attribute.key}
         </Text>
         <Flex justify="between" css={{ gap: '$2' }}>

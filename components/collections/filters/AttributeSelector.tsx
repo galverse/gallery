@@ -1,7 +1,7 @@
-import { faChevronDown } from '@fortawesome/free-solid-svg-icons'
+import { faPlus } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { useAttributes } from '@reservoir0x/reservoir-kit-ui'
-import { Box, Flex, Switch, Text } from 'components/primitives'
+import { Box, Flex, Switch, CheckBox, Text } from 'components/primitives'
 import { useRouter } from 'next/router'
 import { CSSProperties, FC, useMemo, useState } from 'react'
 import { addParam, hasParam, removeParam } from 'utils/router'
@@ -60,24 +60,7 @@ export const AttributeSelector: FC<Props> = ({ attribute, scrollToTop }) => {
           }
         }}
       >
-        <Text
-          style="body1"
-          css={{
-            color: '$gray11',
-            flex: 1,
-            whiteSpace: 'pre',
-            textOverflow: 'ellipsis',
-            overflow: 'hidden',
-          }}
-        >
-          {currentAttribute?.value}
-        </Text>
-
-        <Text style="body3" css={{ color: '$gray11' }}>
-          {currentAttribute?.count}
-        </Text>
-        <Flex align="center">
-          <Switch
+        <CheckBox
             checked={hasParam(
               router,
               `attributes[${attribute.key}]`,
@@ -100,6 +83,24 @@ export const AttributeSelector: FC<Props> = ({ attribute, scrollToTop }) => {
               scrollToTop()
             }}
           />
+        <Text
+          style="body1"
+          css={{
+            flex: 1,
+            textTransform: 'uppercase',
+            whiteSpace: 'pre',
+            textOverflow: 'ellipsis',
+            overflow: 'hidden',
+          }}
+        >
+          {currentAttribute?.value}
+        </Text>
+
+        <Text style="body3" css={{ color: 'white' }}>
+          {currentAttribute?.count}
+        </Text>
+        <Flex align="start">
+          
         </Flex>
       </Flex>
     )
@@ -121,13 +122,13 @@ export const AttributeSelector: FC<Props> = ({ attribute, scrollToTop }) => {
         css={{ mb: '$3', cursor: 'pointer' }}
         onClick={() => setOpen(!open)}
       >
-        <Text as="h5" style="subtitle1" ellipsify>
+        <Text as="h5" style="h5" ellipsify>
           {attribute.key}
         </Text>
         <FontAwesomeIcon
-          icon={faChevronDown}
+          icon={faPlus}
           style={{
-            transform: open ? 'rotate(180deg)' : 'rotate(0)',
+            transform: open ? 'rotate(135deg)' : 'rotate(0)',
             transition: '.3s',
           }}
           width={16}

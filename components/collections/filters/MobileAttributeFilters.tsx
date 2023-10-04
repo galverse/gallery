@@ -67,14 +67,15 @@ export const MobileAttributeFilters: FC<Props> = ({
           position: 'fixed',
           px: '$6',
           py: '$3',
-          boxShadow: '0px 1px 5px rgba(0,0,0,0.2)',
+          boxShadow: '0 0 0 2px var(---focusColor)',
+          backgroundColor: '$neutralBg',
         }}
         type="button"
         size="small"
         corners="pill"
-        color="gray3"
+        color="primary"
       >
-        <Text style="h6">Filter</Text>
+        <Text style="h5">Filter</Text>
         {filtersEnabled && (
           <Flex
             justify="center"

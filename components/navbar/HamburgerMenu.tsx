@@ -7,7 +7,7 @@ import {
   faRightFromBracket,
 } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faTwitter } from '@fortawesome/free-brands-svg-icons'
+import { faInstagram, faTwitter, faYoutube } from '@fortawesome/free-brands-svg-icons'
 import Link from 'next/link'
 import Image from 'next/image'
 import { useAccount, useDisconnect } from 'wagmi'
@@ -16,7 +16,7 @@ import Jazzicon, { jsNumberForAddress } from 'react-jazzicon'
 import { FullscreenModal } from 'components/common/FullscreenModal'
 import { useENSResolver, useMarketplaceChain } from 'hooks'
 import ThemeSwitcher from 'components/navbar/ThemeSwitcher'
-import Wallet from 'components/navbar/Wallet'
+// import Wallet from 'components/navbar/Wallet'
 
 const HamburgerMenu = () => {
   const { address, isConnected } = useAccount()
@@ -59,12 +59,12 @@ const HamburgerMenu = () => {
           justify="between"
         >
           <Link href="/">
-            <Box css={{ width: 46, cursor: 'pointer' }}>
+            <Box css={{ width: 200, cursor: 'pointer' }}>
               <Image
-                src="/reservoirLogo.svg"
-                width={36}
-                height={36}
-                alt="Reservoir"
+                src="/galverseLogo.svg"
+                width={200}
+                height={200}
+                alt="Galverse"
               />
             </Box>
           </Link>
@@ -121,7 +121,7 @@ const HamburgerMenu = () => {
                 </Flex>
               </Flex>
             </Link>
-            <Link href={`/${routePrefix}/collection-rankings`} legacyBehavior>
+            <Link href={"/portfolio?tab=items"} legacyBehavior>
               <Text
                 style="subtitle1"
                 css={{
@@ -131,10 +131,10 @@ const HamburgerMenu = () => {
                   pt: '24px',
                 }}
               >
-                Explore
+                My Gals
               </Text>
             </Link>
-            <Link href="/ethereum/collection-rankings" legacyBehavior>
+            <Link href="/portfolio?tab=listings" legacyBehavior>
               <Text
                 style="subtitle1"
                 css={{
@@ -144,24 +144,24 @@ const HamburgerMenu = () => {
                   pt: '24px',
                 }}
               >
-                NFTs
+                My Listings
               </Text>
             </Link>
 
-            <Anchor
-              href="https://docs.reservoir.tools/docs"
-              target="_blank"
-              css={{
-                borderBottom: '1px solid $gray4',
-                cursor: 'pointer',
-                pb: '$4',
-                pt: '24px',
-                width: '100%',
-              }}
-            >
-              <Text style="subtitle1">Developers</Text>
-            </Anchor>
-            <Link href="/portfolio" legacyBehavior>
+            <Link href="/portfolio?tab=offers" legacyBehavior>
+              <Text
+                style="subtitle1"
+                css={{
+                  borderBottom: '1px solid $gray4',
+                  cursor: 'pointer',
+                  pb: '$4',
+                  pt: '24px',
+                }}
+              >
+                My Offers Made
+              </Text>
+            </Link>
+            <Link href="/portfolio?tab=activity" legacyBehavior>
               <Flex
                 direction="column"
                 css={{
@@ -172,13 +172,10 @@ const HamburgerMenu = () => {
                   gap: '$1',
                 }}
               >
-                <Text style="subtitle1">Portfolio</Text>
-                <Text style="body3" color="subtle">
-                  Manage your items, collections, listings and offers
-                </Text>
+                <Text style="subtitle1">My Activity</Text>
               </Flex>
             </Link>
-            <Wallet />
+           {/* <Wallet /> */}
             <Flex
               css={{
                 justifyContent: 'space-between',
@@ -195,7 +192,7 @@ const HamburgerMenu = () => {
                   pt: '24px',
                 }}
               >
-                Logout
+                Log Out
               </Text>
               <Box css={{ color: '$gray10' }}>
                 <FontAwesomeIcon
@@ -217,47 +214,12 @@ const HamburgerMenu = () => {
             }}
           >
             <Flex direction="column">
-              <Link href="/" legacyBehavior>
-                <Text
-                  style="subtitle1"
-                  css={{
-                    borderBottom: '1px solid $gray4',
-                    cursor: 'pointer',
-                    pb: '$4',
-                    pt: '24px',
-                    width: '100%',
-                  }}
-                >
-                  Explore
-                </Text>
-              </Link>
-              <Link href="/portfolio" legacyBehavior>
-                <Text
-                  style="subtitle1"
-                  css={{
-                    borderBottom: '1px solid $gray4',
-                    cursor: 'pointer',
-                    pb: '$4',
-                    pt: '24px',
-                    width: '100%',
-                  }}
-                >
-                  Portfolio
-                </Text>
-              </Link>
-              <Anchor
-                href="https://docs.reservoir.tools/docs"
-                target="_blank"
-                css={{
-                  borderBottom: '1px solid $gray4',
-                  cursor: 'pointer',
-                  pb: '$4',
-                  pt: '24px',
-                  width: '100%',
-                }}
-              >
-                <Text style="subtitle1">Docs</Text>
-              </Anchor>
+            <Image
+                src="/galverseLogo.svg"
+                width={200}
+                height={200}
+                alt="Galverse"
+              />
             </Flex>
             <Box>
               <ConnectWalletButton />
@@ -274,7 +236,7 @@ const HamburgerMenu = () => {
             borderTop: '1px solid $gray4',
           }}
         >
-          <a href="https://twitter.com/reservoir0x" target="_blank">
+          <a href="https://x.com/galverseNFT" target="_blank">
             <Button
               css={{ justifyContent: 'center', width: '44px', height: '44px' }}
               type="button"
@@ -284,7 +246,27 @@ const HamburgerMenu = () => {
               <FontAwesomeIcon icon={faTwitter} width={20} height={20} />
             </Button>
           </a>
-          <ThemeSwitcher />
+          <a href="https://www.instagram.com/galverseNFT/" target="_blank">
+            <Button
+              css={{ justifyContent: 'center', width: '44px', height: '44px' }}
+              type="button"
+              size="small"
+              color="gray3"
+            >
+              <FontAwesomeIcon icon={faInstagram} width={20} height={20} />
+            </Button>
+          </a>
+          <a href="https://www.youtube.com/@galverse/" target="_blank">
+            <Button
+              css={{ justifyContent: 'center', width: '44px', height: '44px' }}
+              type="button"
+              size="small"
+              color="gray3"
+            >
+              <FontAwesomeIcon icon={faYoutube} width={20} height={20} />
+            </Button>
+          </a>
+          {/*<ThemeSwitcher />*/} 
         </Flex>
       </Flex>
     </FullscreenModal>

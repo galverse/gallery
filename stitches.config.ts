@@ -24,6 +24,7 @@ import { reset } from 'utils/css/reset'
 import { Inter } from '@next/font/google'
 
 const inter = Inter({
+  weight: ['400'],
   subsets: ['latin'],
 })
 
@@ -121,14 +122,22 @@ export const { createTheme, keyframes, styled, globalCss, getCssText } =
         5: '32px',
         6: '64px',
       },
-      fontSizes: {},
-      fontWeights: {},
-      fonts: {
-        body: inter.style.fontFamily,
-        button: '$body',
-      },
-      lineHeights: {},
-      letterSpacings: {},
+      fontSizes: {
+        default: '13px',
+    },
+    fontWeights: {
+        default: 400,
+    },
+    fonts: {
+        default: "'BureauGrot', sans-serif",
+        button: '$default',
+    },
+    lineHeights: {
+        default: '19.24px',
+    },
+    letterSpacings: {
+        default: '0.03em',
+    },
       sizes: {},
       radii: {},
       shadows: {},

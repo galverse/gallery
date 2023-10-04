@@ -381,7 +381,7 @@ const TokenTableRow: FC<TokenTableRowProps> = ({
               <Text style="subtitle3" ellipsify color="subtle">
                 {token?.token?.collection?.name}
               </Text>
-              <Text style="subtitle2" ellipsify>
+              <Text style="h5" ellipsify>
                 {token?.token?.name || `#${token?.token?.tokenId}`}
               </Text>
             </Flex>
@@ -400,24 +400,25 @@ const TokenTableRow: FC<TokenTableRowProps> = ({
               decimals={
                 token?.token?.collection?.floorAskPrice?.currency?.decimals
               }
-              textStyle="subtitle2"
+              textStyle="h5"
               logoHeight={14}
             />
           </Flex>
           <Flex direction="column" align="start" css={{ width: '100%' }}>
-            <Text style="subtitle3" color="subtle">
+            <Text style="h5" color="subtle">
               Top Offer
             </Text>
             <FormatCryptoCurrency
               amount={token?.token?.topBid?.price?.amount?.decimal}
               address={token?.token?.topBid?.price?.currency?.contract}
               decimals={token?.token?.topBid?.price?.currency?.decimals}
-              textStyle="subtitle2"
+              textStyle="h5"
               logoHeight={14}
             />
           </Flex>
         </Flex>
         <Flex css={{ gap: '$2', width: '100%' }}>
+          {/*
           {token?.token?.topBid?.price?.amount?.decimal && isOwner ? (
             <AcceptBid
               tokenId={token.token.tokenId}
@@ -486,7 +487,7 @@ const TokenTableRow: FC<TokenTableRowProps> = ({
               </Button>
             }
             contentProps={{ asChild: true, forceMount: true }}
-          >
+          >*/}
             <DropdownMenuItem
               css={{ py: '$3', width: '100%' }}
               onClick={(e) => {
@@ -551,7 +552,7 @@ const TokenTableRow: FC<TokenTableRowProps> = ({
                 <Text>Refresh</Text>
               </Flex>
             </DropdownMenuItem>
-
+{/*
             {isOracleOrder &&
             token?.ownership?.floorAsk?.id &&
             token?.token?.tokenId &&
@@ -633,7 +634,7 @@ const TokenTableRow: FC<TokenTableRowProps> = ({
                 }
               />
             ) : null}
-          </Dropdown>
+          </Dropdown>*/}
         </Flex>
       </Flex>
     )
@@ -689,7 +690,7 @@ const TokenTableRow: FC<TokenTableRowProps> = ({
               >
                 <Flex justify="between" align="center" css={{ gap: '$2' }}>
                   <Text style="subtitle3" ellipsify color="subtle">
-                    {token?.token?.collection?.name}
+                    {token?.token?.collection?.id}
                   </Text>
                   {token?.token?.kind === 'erc1155' &&
                     token?.ownership?.tokenCount && (
@@ -717,7 +718,7 @@ const TokenTableRow: FC<TokenTableRowProps> = ({
                     }
                   />
                 </Flex>
-                <Text style="subtitle2" ellipsify>
+                <Text style="h5" ellipsify>
                   {token?.token?.name || `#${token?.token?.tokenId}`}
                 </Text>
               </Flex>
@@ -840,7 +841,7 @@ const TokenTableRow: FC<TokenTableRowProps> = ({
                 amount={token?.token?.topBid?.price?.amount?.decimal}
                 address={token?.token?.topBid?.price?.currency?.contract}
                 decimals={token?.token?.topBid?.price?.currency?.decimals}
-                textStyle="subtitle2"
+                textStyle="h5"
                 logoHeight={14}
               />
             </Flex>
@@ -1096,7 +1097,7 @@ const TableHeading: FC<{ isOwner: boolean }> = ({ isOwner }) => (
       </Text>
     </TableCell>
     <TableCell>
-      <Text style="subtitle3" color="subtle">
+      <Text style="h5" color="subtle">
         Top Offer
       </Text>
     </TableCell>

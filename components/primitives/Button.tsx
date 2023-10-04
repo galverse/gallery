@@ -25,10 +25,13 @@ const Button = styled('button', {
   variants: {
     color: {
       primary: {
-        backgroundColor: '$primary9',
+        backgroundColor: '$neutralBG',
+        fontFamily: 'SFCompactThin',
+        textTransform: 'uppercase',
+        boxShadow: '0 0 0 2px var(---focusColor)',
         color: 'white',
         '&:hover': {
-          backgroundColor: '$primary10',
+          backgroundColor: '$neutralBgSubtle',
         },
       },
       secondary: {
@@ -39,8 +42,10 @@ const Button = styled('button', {
         },
       },
       gray3: {
-        backgroundColor: '$gray3',
+        backgroundColor: '$neutralBG',
         color: '$gray12',
+        margin: '2px 2px 2px 2px',
+        boxShadow: '0 0 0 2px var(---focusColor)',
         '&:hover': {
           backgroundColor: '$gray4',
         },

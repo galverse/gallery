@@ -240,7 +240,7 @@ const OfferTableRow: FC<OfferTableRowProps> = ({
       </Flex>
       <Flex direction="column" align="end" css={{ gap: '$2' }}>
         <Flex align="center" css={{ gap: '$2' }}>
-          {/* Owner and not user offer */}
+          {/* Owner and not user offer 
           {isOwner && !isUserOffer ? (
             <AcceptBid
               bidId={offer.id}
@@ -254,9 +254,9 @@ const OfferTableRow: FC<OfferTableRowProps> = ({
               buttonProps={{ color: 'primary' }}
               buttonCss={{ fontSize: 14, px: '$4', py: '$2', minHeight: 36 }}
             />
-          ) : null}
+          ) : null}*/}
           {/* Not Owner and is user offer, owner of erc 1155 and is your offer */}
-          {(!isOwner && isUserOffer) || (isOwner && is1155 && isUserOffer) ? (
+          {/*{(!isOwner && isUserOffer) || (isOwner && is1155 && isUserOffer) ? (
             <>
               {isOracleOrder ? (
                 <EditBid
@@ -332,7 +332,7 @@ const OfferTableRow: FC<OfferTableRowProps> = ({
                 }
               />
             </>
-          ) : null}
+          ) : null}*/}
         </Flex>
         <Text style="body2" color="subtle">
           {expirationText}

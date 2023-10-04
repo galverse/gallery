@@ -1,4 +1,4 @@
-import { faGasPump } from '@fortawesome/free-solid-svg-icons'
+{/*import { faGasPump } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { useBids, useListings, useTokens } from '@reservoir0x/reservoir-kit-ui'
 import { AcceptBid, Bid, BuyNow, List } from 'components/buttons'
@@ -20,14 +20,16 @@ type Props = {
   account: ReturnType<typeof useAccount>
 }
 
-export const TokenActions: FC<Props> = ({
+export const TokenActions: FC<Props> 
+=({
   token,
   offer,
   listing,
   isOwner,
   mutate,
   account,
-}) => {
+}) => 
+{
   const router = useRouter()
   const bidOpenState = useState(true)
   const buyOpenState = useState(true)
@@ -68,6 +70,7 @@ export const TokenActions: FC<Props> = ({
   }
 
   return (
+    {/*
     <Grid
       align="center"
       css={{
@@ -250,5 +253,6 @@ export const TokenActions: FC<Props> = ({
         />
       )}
     </Grid>
-  )
+        )
 }
+*/}

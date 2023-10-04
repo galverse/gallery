@@ -1,0 +1,18 @@
+/* /src/custom-font.css */
+@font-face {
+    font-family: 'BureauGrot';
+    src: url('/fonts/BureauGrot.otf') format('opentype');
+  }
+  @font-face {
+    font-family: 'SFCompactMedium';
+    src: url('/fonts/sf-compact-medium.otf') format('opentype');
+  }
+  @font-face {
+    font-family: 'SFCompactThin';
+    src: url('/fonts/sf-compact-thin.otf') format('opentype');
+  }
+  
+  body {
+    font-family: 'BureauGrot', sans-serif;
+  }
+  

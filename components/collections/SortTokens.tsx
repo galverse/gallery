@@ -15,14 +15,14 @@ import { CSS } from '@stitches/react'
 type Options =
   | 'Price low to high'
   | 'Price high to low'
-  | 'Rare to common'
-  | 'Common to rare'
+  | 'Oldest First'
+  | 'Newest First'
 
 const options: { [x: string]: { sortBy: string; sortDirection: string } } = {
   'Price low to high': { sortBy: 'floorAskPrice', sortDirection: 'asc' },
   'Price high to low': { sortBy: 'floorAskPrice', sortDirection: 'desc' },
-  'Rare to common': { sortBy: 'rarity', sortDirection: 'asc' },
-  'Common to rare': { sortBy: 'rarity', sortDirection: 'desc' },
+  'Oldest First': { sortBy: 'rarity', sortDirection: 'asc' },
+  'Newest First': { sortBy: 'rarity', sortDirection: 'desc' },
 }
 
 type Props = {
@@ -42,11 +42,11 @@ export const SortTokens: FC<Props> = ({ css }) => {
     const sortDirection = router?.query['sortDirection']?.toString()
 
     if (sortBy === 'rarity' && sortDirection === 'desc') {
-      setSortSelection('Common to rare')
+      setSortSelection('Newest First')
       return
     }
     if (sortBy === 'rarity' && sortDirection === 'asc') {
-      setSortSelection('Rare to common')
+      setSortSelection('Oldest First')
       return
     }
     if (sortBy === 'floorAskPrice' && sortDirection === 'desc') {
@@ -62,7 +62,8 @@ export const SortTokens: FC<Props> = ({ css }) => {
         <Button
           color="gray3"
           css={{
-            ...css,
+            fontFamily: 'SFCompactMedium',
+            textTransform: 'uppercase',
           }}
         >
           {isSmallDevice ? (
@@ -82,7 +83,7 @@ export const SortTokens: FC<Props> = ({ css }) => {
           )}
         </Button>
       </DropdownMenu.Trigger>
-      <DropdownMenuContent css={{ width: '220px', mt: '$2', zIndex: 1000 }}>
+      <DropdownMenuContent css={{ width: '220px', mt: '$2', zIndex: 1000, fontFamily: 'SFCompactMedium', textTransform: 'uppercase', }}>
         {Object.keys(options).map((key) => (
           <DropdownMenuItem
             key={key}

@@ -64,7 +64,7 @@ const SelectedAttributes: FC<Props> = ({ collection, mutate }) => {
           css={{ mr: '$3' }}
           size="small"
         >
-          <Text style="body1" css={{ color: '$gray12' }}>
+          <Text style="body1" css={{ color: '$gray9' }}>
             {key}:
           </Text>
           <Text style="subtitle1">{value}</Text>
@@ -74,7 +74,7 @@ const SelectedAttributes: FC<Props> = ({ collection, mutate }) => {
         </Button>
       ))}
 
-      {filters.length > 1 && (
+      {filters.length > 0 && (
         <Button
           onClick={() => {
             clearAllAttributes(router)
@@ -83,7 +83,7 @@ const SelectedAttributes: FC<Props> = ({ collection, mutate }) => {
           css={{
             color: '$primary11',
             fontWeight: 500,
-
+            textTransform: 'uppercase',
             px: '$4',
           }}
         >
@@ -91,7 +91,7 @@ const SelectedAttributes: FC<Props> = ({ collection, mutate }) => {
         </Button>
       )}
 
-      {filters.length === 1 && (
+   {/*   {filters.length === 1 && (
         <CollectionOffer
           collection={collection}
           buttonChildren={
@@ -107,7 +107,7 @@ const SelectedAttributes: FC<Props> = ({ collection, mutate }) => {
           buttonCss={{ px: '$4' }}
           mutate={mutate}
         />
-      )}
+        )} */}
     </Flex>
   )
 }

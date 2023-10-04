@@ -4,7 +4,8 @@ import { useAccount, useDisconnect } from 'wagmi'
 import { useENSResolver } from 'hooks'
 import { Box, Button, Flex, Grid, Text } from 'components/primitives'
 import { Avatar } from 'components/primitives/Avatar'
-import ThemeSwitcher from './ThemeSwitcher'
+import Image from 'next/image'
+// import ThemeSwitcher from './ThemeSwitcher'
 import Jazzicon from 'react-jazzicon/dist/Jazzicon'
 import { jsNumberForAddress } from 'react-jazzicon'
 import * as DialogPrimitive from '@radix-ui/react-dialog'
@@ -20,8 +21,9 @@ import {
   faStore,
 } from '@fortawesome/free-solid-svg-icons'
 import CopyText from 'components/common/CopyText'
+import GalverseLogo from 'public/galverseLogo.svg'
 import Link from 'next/link'
-import Wallet from './Wallet'
+// import Wallet from './Wallet'
 import { useRouter } from 'next/router'
 
 export const AccountSidebar: FC = () => {
@@ -180,7 +182,7 @@ export const AccountSidebar: FC = () => {
                         }}
                       >
                         <FontAwesomeIcon icon={faStore} />
-                        <Text style="body1">My Items</Text>
+                        <Text style="body1">My Gals</Text>
                       </Flex>
                     </Link>
                     <Link href="/portfolio?tab=listings" replace={true}>
@@ -194,7 +196,7 @@ export const AccountSidebar: FC = () => {
                         }}
                       >
                         <FontAwesomeIcon icon={faList} />
-                        <Text style="body1">Listings</Text>
+                        <Text style="body1">My Listings</Text>
                       </Flex>
                     </Link>
                     <Link href="/portfolio?tab=offers" replace={true}>
@@ -208,7 +210,7 @@ export const AccountSidebar: FC = () => {
                         }}
                       >
                         <FontAwesomeIcon icon={faHand} />
-                        <Text style="body1">Offers Made</Text>
+                        <Text style="body1">My Offers Made</Text>
                       </Flex>
                     </Link>
                     <Link href="/portfolio?tab=activity" replace={true}>
@@ -222,29 +224,36 @@ export const AccountSidebar: FC = () => {
                         }}
                       >
                         <FontAwesomeIcon icon={faChartLine} />
-                        <Text style="body1">Activity</Text>
+                        <Text style="body1">My Activity</Text>
                       </Flex>
                     </Link>
                   </Grid>
-                  <Wallet />
+                  {/*<Wallet />*/}
 
                   <Flex
-                    css={{ m: '$4', mt: '$5' }}
+                    css={{ m: 'auto', mt: '$5' }}
                     justify="between"
                     align="center"
                   >
-                    <Text style="body1" css={{ mb: '$2', flex: 1 }} as="p">
+                     <Image
+                src="/galverseLogo.svg"
+                width={200}
+                height={200}
+                alt="Galverse"
+              />
+                  {/*  <Text style="body1" css={{ mb: '$2', flex: 1 }} as="p">
                       Theme
                     </Text>
-                    <ThemeSwitcher />
+                    <ThemeSwitcher /> */}
                   </Flex>
+                 
                   <Button
                     size="large"
-                    css={{ my: '$4', justifyContent: 'center' }}
+                    css={{ my: '$4', justifyContent: 'center', cursor: 'pointer', fontFamily: 'SFCompactThin', textTransform: 'uppercase' }}
                     color="gray3"
                     onClick={() => disconnect()}
                   >
-                    Disconnect Wallet
+                    Log Out
                   </Button>
                 </Flex>
               </motion.div>

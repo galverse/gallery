@@ -31,6 +31,10 @@ const StyledImage = styled('img', {})
 
 const Home: NextPage<any> = ({ ssr }) => {
   const router = useRouter()
+  // Redirect users to the desired page
+  useEffect(() => {
+    router.push('/ethereum/collection/0x582048c4077a34e7c3799962f1f8c5342a3f4b12')
+  }, [router]);
   const marketplaceChain = useMarketplaceChain()
 
   // not sure if there is a better way to fix this
@@ -44,7 +48,7 @@ const Home: NextPage<any> = ({ ssr }) => {
 
   const { chain } = useContext(ChainContext)
 
-  const { data: topSellingCollectionsData } = useTopSellingCollections(
+  {/*const { data: topSellingCollectionsData } = useTopSellingCollections(
     {
       period: '24h',
       includeRecentSales: true,
@@ -61,11 +65,12 @@ const Home: NextPage<any> = ({ ssr }) => {
     chain?.id
   )
 
-  const topCollection = topSellingCollectionsData?.collections?.[0]
+  const topCollection = topSellingCollectionsData?.collections?.[0]*/}
 
   return (
     <Layout>
       <Head />
+      {/*
       <Box
         css={{
           p: 24,
@@ -529,11 +534,12 @@ const Home: NextPage<any> = ({ ssr }) => {
         </Box>
       </Box>
 
-      <Footer />
+      <Footer /> */}
     </Layout>
   )
 }
 
+{/*
 type TopSellingCollectionsSchema =
   paths['/collections/top-selling/v1']['get']['responses']['200']['schema']
 
@@ -572,6 +578,6 @@ export const getServerSideProps: GetServerSideProps<{
   return {
     props: { ssr: { topSellingCollections } },
   }
-}
+}*/}
 
 export default Home

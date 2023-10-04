@@ -28,7 +28,7 @@ import AttributeCard from 'components/token/AttributeCard'
 import FullscreenMedia from 'components/token/FullscreenMedia'
 import { PriceData } from 'components/token/PriceData'
 import RarityRank from 'components/token/RarityRank'
-import { TokenActions } from 'components/token/TokenActions'
+// import { TokenActions } from 'components/token/TokenActions'
 import { TokenActivityTable } from 'components/token/ActivityTable'
 import { TokenInfo } from 'components/token/TokenInfo'
 import { ToastContext } from 'context/ToastContextProvider'
@@ -463,7 +463,7 @@ const IndexPage: NextPage<Props> = ({ assetId, ssr }) => {
               )}
               {!is1155 && (
                 <Flex align="center" css={{ mt: '$2' }}>
-                  <Text style="subtitle3" color="subtle" css={{ mr: '$2' }}>
+                  <Text style="h5" color="white" css={{ mr: '$2', textTransform: 'uppercase' }}>
                     Owner
                   </Text>
                   <Jazzicon
@@ -483,7 +483,9 @@ const IndexPage: NextPage<Props> = ({ assetId, ssr }) => {
                 collectionAttributes={attributesData?.data}
               />
               <PriceData token={token} />
+              {/*
               {isMounted && (
+               
                 <TokenActions
                   token={token}
                   offer={offer}
@@ -491,8 +493,7 @@ const IndexPage: NextPage<Props> = ({ assetId, ssr }) => {
                   isOwner={isOwner}
                   mutate={mutate}
                   account={account}
-                />
-              )}
+              />*/}
               <Tabs.Root
                 value={tabValue}
                 onValueChange={(value) => setTabValue(value)}

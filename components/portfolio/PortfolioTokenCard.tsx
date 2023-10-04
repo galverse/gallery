@@ -432,6 +432,7 @@ export default ({
               alignOffset: -18,
             }}
           >
+            {/*
             {token?.token?.topBid?.price?.amount?.decimal && isOwner && (
               <AcceptBid
                 tokenId={token.token.tokenId}
@@ -460,7 +461,7 @@ export default ({
                   </>
                 }
               />
-            )}
+            )}*/}
             <DropdownMenuItem
               css={{ py: '$3', width: '100%' }}
               onClick={(e) => {
@@ -526,6 +527,7 @@ export default ({
               </Flex>
             </DropdownMenuItem>
 
+{/*
             {isOracleOrder &&
             token?.ownership?.floorAsk?.id &&
             token?.token?.tokenId &&
@@ -606,7 +608,7 @@ export default ({
                   </Flex>
                 }
               />
-            ) : null}
+            ) : null}*/}
           </Dropdown>
         </Flex>
       ) : null}

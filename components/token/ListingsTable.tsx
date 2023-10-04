@@ -245,7 +245,7 @@ const ListingTableRow: FC<ListingTableRowProps> = ({
       </Flex>
       <Flex direction="column" align="end" css={{ gap: '$2' }}>
         <Flex align="center" css={{ gap: '$2' }}>
-          {/* Not owner, erc 721 */}
+          {/* Not owner, erc 721 
           {!isOwner && !is1155 ? (
             <BuyNow
               tokenId={listing.criteria?.data?.token?.tokenId || tokenId}
@@ -256,7 +256,7 @@ const ListingTableRow: FC<ListingTableRowProps> = ({
               mutate={mutate}
             />
           ) : null}
-          {/* Not user's listing, erc 1155 */}
+           Not user's listing, erc 1155 
           {!isUserListing && is1155 ? (
             <AddToCart
               orderId={listing.id}
@@ -270,7 +270,7 @@ const ListingTableRow: FC<ListingTableRowProps> = ({
               buttonProps={{ corners: 'rounded' }}
             />
           ) : null}
-          {/* Owner, erc 721 or erc 1155 */}
+          {/* Owner, erc 721 or erc 1155 
           {isOwner && isUserListing ? (
             <>
               {isOracleOrder ? (
@@ -347,7 +347,7 @@ const ListingTableRow: FC<ListingTableRowProps> = ({
                 }
               />
             </>
-          ) : null}
+          ) : null}*/}
         </Flex>
         <Text style="body2" color="subtle">
           {expirationText}

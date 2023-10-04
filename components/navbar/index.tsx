@@ -1,6 +1,8 @@
+// import GlobalSearch from './GlobalSearch'
+// import MobileSearch from './MobileSearch'
+// import CartButton from './CartButton'
 import { useRef } from 'react'
 import { Box, Flex, Card } from '../primitives'
-import GlobalSearch from './GlobalSearch'
 import { useRouter } from 'next/router'
 import { useHotkeys } from 'react-hotkeys-hook'
 import Link from 'next/link'
@@ -9,12 +11,11 @@ import { ConnectWalletButton } from 'components/ConnectWalletButton'
 import NavItem from './NavItem'
 import ThemeSwitcher from './ThemeSwitcher'
 import HamburgerMenu from './HamburgerMenu'
-import MobileSearch from './MobileSearch'
 import { useTheme } from 'next-themes'
 import { useMediaQuery } from 'react-responsive'
 import { useMarketplaceChain, useMounted } from '../../hooks'
 import { useAccount } from 'wagmi'
-import CartButton from './CartButton'
+
 import { AccountSidebar } from 'components/navbar/AccountSidebar'
 
 import * as HoverCard from '@radix-ui/react-hover-card'
@@ -29,14 +30,15 @@ const Navbar = () => {
   const isMounted = useMounted()
   const { routePrefix } = useMarketplaceChain()
 
-  let searchRef = useRef<HTMLInputElement>(null)
+//  let searchRef = useRef<HTMLInputElement>(null)
 
   const router = useRouter()
   useHotkeys('meta+k', (e) => {
     e.preventDefault()
-    if (searchRef?.current) {
+ {/*   if (searchRef?.current) {
       searchRef?.current?.focus()
-    }
+       } 
+*/}
   })
 
   if (!isMounted) {
@@ -63,20 +65,20 @@ const Navbar = () => {
       <Box css={{ flex: 1 }}>
         <Flex align="center">
           <Link href={`/${routePrefix}`}>
-            <Box css={{ width: 46, cursor: 'pointer' }}>
+            <Box css={{ width: 200, cursor: 'pointer' }}>
               <Image
-                src="/reservoirLogo.svg"
-                width={36}
-                height={36}
-                alt="Reservoir"
+                src="/galverseLogo.svg"
+                width={200}
+                height={200}
+                alt="Galverse"
               />
             </Box>
           </Link>
         </Flex>
       </Box>
       <Flex align="center" css={{ gap: '$3' }}>
-        <MobileSearch key={`${router.asPath}-search`} />
-        <CartButton />
+        {/*<MobileSearch key={`${router.asPath}-search`} />
+        <CartButton />*/}
         <HamburgerMenu key={`${router.asPath}-hamburger`} />
       </Flex>
     </Flex>
@@ -114,10 +116,10 @@ const Navbar = () => {
           <Link href={`/${routePrefix}`}>
             <Box css={{ cursor: 'pointer' }}>
               <Image
-                src="/reservoirLogo.svg"
-                width={36}
-                height={36}
-                alt="Reservoir"
+                src="/galverseLogo.svg"
+                width={200}
+                height={200}
+                alt="Galverse"
               />
             </Box>
           </Link>
@@ -128,12 +130,6 @@ const Navbar = () => {
               ml: '$5',
             }}
           >
-            <Link href={`/${routePrefix}`}>
-              <NavItem>Featured</NavItem>
-            </Link>
-            <Link href={`/${routePrefix}/collections/trending`}>
-              <NavItem>NFTs</NavItem>
-            </Link>
 
             {/* <HoverCard.Root openDelay={200}>
               <HoverCard.Trigger>
@@ -181,12 +177,12 @@ const Navbar = () => {
         </Flex>
       </Box>
       <Box css={{ flex: 1, px: '$5' }}>
-        <GlobalSearch
+       {/* <GlobalSearch
           ref={searchRef}
           placeholder="Search collections and addresses"
           containerCss={{ width: '100%' }}
           key={router.asPath}
-        />
+        />*/}
       </Box>
 
       <Flex
@@ -201,11 +197,19 @@ const Navbar = () => {
         align="center"
       >
         <Flex css={{ gap: '$5', mr: 12 }}>
-          <Box>
+        <a target="_blank" href={`https://www.galverse.art`}>
+              <Box css={{ mr: '$2' }}>
+                <NavItem>Home</NavItem>
+              </Box>
+            </a>
+            <Link href={`/ethereum/collection/0x582048c4077a34e7c3799962f1f8c5342a3f4b12`}>
+            <NavItem>Gallery</NavItem>
+          </Link>
+          {/*<Box>
             <HoverCard.Root openDelay={120}>
               <HoverCard.Trigger>
-                <a target="_blank" href={`https://docs.reservoir.tools/docs`}>
-                  <NavItem>Developers</NavItem>
+                <a target="_blank" href={`https://www.galverse.art/`}>
+                  <NavItem>Home</NavItem>
                 </a>
               </HoverCard.Trigger>
               <HoverCard.Content sideOffset={24} align="start">
@@ -242,24 +246,18 @@ const Navbar = () => {
                 </Card>
               </HoverCard.Content>
             </HoverCard.Root>
-          </Box>
-          {isConnected && (
-            <Link href={`/portfolio`}>
-              <Box css={{ mr: '$2' }}>
-                <NavItem>Portfolio</NavItem>
-              </Box>
-            </Link>
-          )}
-        </Flex>
+          </Box>*/}
+
+          </Flex>
 
         {isConnected ? (
           <AccountSidebar />
         ) : (
-          <Box css={{ maxWidth: '185px' }}>
+          <Box css={{ maxWidth: '285px' }}>
             <ConnectWalletButton />
           </Box>
         )}
-        <CartButton />
+        {/*<CartButton /> */}
       </Flex>
     </Flex>
   )

@@ -13,6 +13,7 @@ import {
   FormatCryptoCurrency,
   Text,
   Tooltip,
+  Button,
 } from 'components/primitives'
 import { ToastContext } from 'context/ToastContextProvider'
 import { useMarketplaceChain } from 'hooks'
@@ -40,7 +41,7 @@ export default ({
   token,
   address,
   rarityEnabled = true,
-  addToCartEnabled = true,
+  addToCartEnabled = false,
   showAsk = true,
   mutate,
   onMediaPlayed,
@@ -108,7 +109,7 @@ export default ({
         </Flex>
       )}
 
-      {is1155 && token?.token?.supply && (
+   {/*   {is1155 && token?.token?.supply && (
         <Flex
           justify="center"
           align="center"
@@ -135,7 +136,7 @@ export default ({
             x{formatNumber(token?.token?.supply, 0, true)}
           </Text>
         </Flex>
-      )}
+      )}*/}
       <Flex
         justify="center"
         align="center"
@@ -162,17 +163,17 @@ export default ({
         passHref
         href={`/${routePrefix}/asset/${token?.token?.contract}:${token?.token?.tokenId}`}
       >
-        <Box css={{ background: '$gray3', overflow: 'hidden' }}>
-          <TokenMedia
-            token={token?.token}
-            style={{
-              width: '100%',
-              transition: 'transform .3s ease-in-out',
-              maxHeight: 720,
-              height: '100%',
-              borderRadius: 0,
-              aspectRatio: '1/1',
-            }}
+        <Box css={{ position: 'relative', background: '$gray3', overflow: 'hidden', transition: 'all 0.9s ease-in-out' }}>
+    {/* Token Image */}
+    <TokenMedia
+        token={token?.token}
+        style={{
+            width: '100%',
+            maxHeight: 720,
+            height: '100%',
+            borderRadius: 0,
+            aspectRatio: '1/1',
+        }}
             staticOnly={!showMedia}
             imageResolution={'medium'}
             audioOptions={{
@@ -199,24 +200,83 @@ export default ({
         href={`/${routePrefix}/asset/${token?.token?.contract}:${token?.token?.tokenId}`}
       >
         <Flex
-          css={{ p: '$4', minHeight: showAsk ? 132 : 0, cursor: 'pointer' }}
+          css={{ cursor: 'pointer' }}
           direction="column"
         >
-          <Flex css={{ mb: '$2' }} align="center" justify="between">
-            <Flex align="center" css={{ gap: '$1', minWidth: 0 }}>
-              <Text
+          <Flex align="center" justify="between">
+            {/* Dark overlay for hover effect */}
+    <Box css={{
+        position: 'absolute',
+        top: 0,
+        left: 0,
+        width: '100%',
+        height: '100%',
+        backgroundColor: 'rgba(0,0,0,0)',  // Transparent by default
+        transition: 'background-color 0.3s ease-in-out',
+        '&:hover': {
+            backgroundColor: 'rgba(0,0,0,0.3)'  // Darken on hover
+        }
+    }}>
+        {/* Overlay Text */}
+        <Flex
+            css={{
+                position: 'absolute',
+                top: '80%',
+                left: '50%',
+                flexDirection: 'column',
+                gap: '$1',
+                color: 'white',
+                zIndex: 1,
+                transform: 'translate(-50%, -50%)',
+                opacity: 0,  // Hidden by default
+                transition: 'opacity 0.3s ease-in-out',
+                '&:hover': {
+                    opacity: 1  // Show on hover
+                }
+            }}
+        >
+            <Text
+                style="h5"
+                as="p"
+                css={{
+                    fontWeight: 100,
+                    fontSize: '28px',
+                    maxWidth: '90%',
+                    whiteSpace: 'nowrap',
+                }}
+            >
+                {token?.token?.name}
+            </Text>
+            <Text
                 style="subtitle1"
                 as="p"
-                ellipsify
                 css={{
-                  fontWeight: 600,
-                  pr: '$1',
-                  flex: 1,
+                    fontWeight: 600,
+                    color: '$gray11',
+                    margin: 'auto',
+                    maxWidth: '90%',
+                    whiteSpace: 'nowrap',
                 }}
+            >
+                {'NO. ' + token?.token?.tokenId}
+            </Text>
+            {/* Button */}
+            
+            <Box css={{marginTop: '$2', margin: 'auto'}}>
+            <Link
+        href={`/${routePrefix}/asset/${token?.token?.contract}:${token?.token?.tokenId}`}
+      >
+                      <Button
+                css={{ justifyContent: 'center', backgroundColor: '#000', width: 'auto', height: 'auto' }}
+                type="button"
+                size="small"
               >
-                {token?.token?.name || '#' + token?.token?.tokenId}{' '}
-              </Text>
-              {token?.token?.isFlagged && (
+                VIEW PROFILE
+              </Button>
+              </Link>
+            </Box>
+            
+        {/*      {token?.token?.isFlagged && (
                 <Tooltip
                   content={
                     <Text style="body3" as="p">
@@ -232,9 +292,9 @@ export default ({
                     />
                   </Text>
                 </Tooltip>
-              )}
-            </Flex>
-            {rarityEnabled && !is1155 && token?.token?.rarityRank && (
+                )}*/}
+            </Flex></Box>
+            {/*{rarityEnabled && !is1155 && token?.token?.rarityRank && (
               <Box
                 css={{
                   px: '$1',
@@ -253,11 +313,10 @@ export default ({
                     {formatNumber(token?.token?.rarityRank)}
                   </Text>
                 </Flex>
-              </Box>
-            )}
+              </Box>*/}
           </Flex>
 
-          {showAsk && (
+        {/*  {showAsk && (
             <Flex align="center" justify="between" css={{ gap: '$2' }}>
               <Flex align="center" css={{ gap: '$2' }}>
                 <Box
@@ -299,13 +358,20 @@ export default ({
                     )}
                   </Text>
                 ) : null}
-              </Flex>
+                    </Flex>*/}
 
               {showSource && token?.market?.floorAsk?.source?.name ? (
+                
                 <img
                   style={{
+                    transform: 'translate(-50%, -50%)',
                     width: 20,
                     height: 20,
+                    position: 'absolute',
+                    top: '10%',
+                    left: '10%',
+                    flexDirection: 'column',
+                    gap: '$1',
                     borderRadius: '50%',
                   }}
                   onClick={(e) => {
@@ -317,9 +383,7 @@ export default ({
                   src={`${proxyApi}/redirect/sources/${token?.market?.floorAsk?.source?.domain}/logo/v2`}
                 />
               ) : null}
-            </Flex>
-          )}
-          {token?.token?.lastSale?.price?.amount?.decimal ? (
+          {/*{token?.token?.lastSale?.price?.amount?.decimal ? (
             <Flex css={{ gap: '$2', marginTop: 'auto' }}>
               <Text css={{ color: '$gray11' }} style="subtitle3">
                 Last Sale
@@ -333,10 +397,10 @@ export default ({
                 maximumFractionDigits={4}
               />
             </Flex>
-          ) : null}
+          ) : null}*/}
         </Flex>
       </Link>
-      {showAsk && isOwner && token?.market?.floorAsk?.price?.amount ? (
+    {/*  {showAsk && isOwner && token?.market?.floorAsk?.price?.amount ? (
         <Flex
           className="token-button-container"
           css={{
@@ -349,6 +413,7 @@ export default ({
             gap: 1,
           }}
         >
+          
           <BuyNow
             tokenId={token.token?.tokenId}
             collectionId={token.token?.collection?.id}
@@ -373,8 +438,9 @@ export default ({
               buttonProps={{ corners: 'square' }}
             />
           ) : null}
+            
         </Flex>
-      ) : null}
+      ) : null}*/}
     </Box>
   )
 }

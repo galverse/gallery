@@ -257,10 +257,10 @@ const IndexPage: NextPage = () => {
                           width: '100%',
                         }}
                       >
-                        <TabsTrigger value="items">Items</TabsTrigger>
-                        <TabsTrigger value="listings">Listings</TabsTrigger>
-                        <TabsTrigger value="offers">Offers Made</TabsTrigger>
-                        <TabsTrigger value="activity">Activity</TabsTrigger>
+                        <TabsTrigger value="items">My Gals</TabsTrigger>
+                        <TabsTrigger value="listings">My Listings</TabsTrigger>
+                        <TabsTrigger value="offers">My Offers Made</TabsTrigger>
+                        <TabsTrigger value="activity">My Activity</TabsTrigger>
                       </TabsList>
                     </Flex>
 

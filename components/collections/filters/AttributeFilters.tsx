@@ -26,7 +26,7 @@ export const AttributeFilters: FC<Props> = ({
       onOpenChange={setOpen}
       style={{
         transition: 'width .5s',
-        width: open ? 320 : 0,
+        width: open ? 420 : 0,
       }}
     >
       <CollapsibleContent

@@ -3,13 +3,20 @@ import AnalyticsProvider, {
 } from 'components/AnalyticsProvider'
 initializeAnalytics()
 import ErrorTrackingProvider from 'components/ErrorTrackingProvider'
+import { globalCss } from 'stitches.config'
+
+
 
 import { Inter } from '@next/font/google'
+import { Luckiest_Guy } from '@next/font/google'
+import { Roboto } from '@next/font/google'
+import '../utils/css/custom-font.css';
 import type { AppContext, AppProps } from 'next/app'
 import { default as NextApp } from 'next/app'
 import { ThemeProvider, useTheme } from 'next-themes'
 import { darkTheme, globalReset } from 'stitches.config'
 import '@rainbow-me/rainbowkit/styles.css'
+import { styled } from '@stitches/react';
 import {
   RainbowKitProvider,
   getDefaultWallets,
@@ -40,13 +47,13 @@ import ReferralContextProvider, {
 } from 'context/ReferralContextProvider'
 
 //CONFIGURABLE: Use nextjs to load your own custom font: https://nextjs.org/docs/basic-features/font-optimization
-const inter = Inter({
-  subsets: ['latin'],
-})
+
 
 export const NORMALIZE_ROYALTIES = process.env.NEXT_PUBLIC_NORMALIZE_ROYALTIES
   ? process.env.NEXT_PUBLIC_NORMALIZE_ROYALTIES === 'true'
   : false
+
+
 
 const WALLET_CONNECT_PROJECT_ID =
   process.env.NEXT_PUBLIC_WALLET_CONNECT_PROJECT_ID || ''
@@ -70,8 +77,8 @@ const wagmiClient = createConfig({
 
 //CONFIGURABLE: Here you can override any of the theme tokens provided by RK: https://docs.reservoir.tools/docs/reservoir-kit-theming-and-customization
 const reservoirKitThemeOverrides = {
-  headlineFont: inter.style.fontFamily,
-  font: inter.style.fontFamily,
+  headlineFont: 'BureauGrot',
+  font: 'BureauGrot',
   primaryColor: '#6E56CB',
   primaryHoverColor: '#644fc1',
 }
@@ -107,7 +114,10 @@ function MyApp({
   baseUrl,
 }: AppProps & { baseUrl: string }) {
   globalReset()
+  globalCss()
+  
 
+  const globalStylesInstance = globalCss()
   const { theme } = useTheme()
   const marketplaceChain = useMarketplaceChain()
   const [reservoirKitTheme, setReservoirKitTheme] = useState<
