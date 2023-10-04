@@ -87,10 +87,10 @@ function AppWrapper(props: AppProps & { baseUrl: string }) {
   return (
     <ThemeProvider
       attribute="class"
-      defaultTheme="light"
+      defaultTheme="dark"
       value={{
         dark: darkTheme.className,
-        light: 'light',
+        light: 'dark',
       }}
     >
       <WagmiConfig config={wagmiClient}>
@@ -167,7 +167,7 @@ function MyApp({
         defaultTheme="dark"
         value={{
           dark: darkTheme.className,
-          light: 'light',
+          light: 'dark',
         }}
       >
         <ReservoirKitProvider
