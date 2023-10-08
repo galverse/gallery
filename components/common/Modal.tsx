@@ -11,7 +11,7 @@ import { Anchor, Button, Flex, Text, Box } from '../primitives'
 import { styled } from '../../stitches.config'
 import { Dialog } from '../primitives/Dialog'
 import LoadingSpinner from './LoadingSpinner'
-import GalverseLogo from 'public/galverseLogo.svg'
+import GalverseLogo from 'public/home/logos/brand-logo.svg'
 
 const Title = styled(DialogPrimitive.Title, {
   margin: 0,

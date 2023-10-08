@@ -1,4 +1,7 @@
-import { Box, Button } from 'components/primitives'
+import { Box, Button, GridSwitcher } from 'components/primitives'
+import { useGrid } from 'context/GridContextProvider';
+import Image from 'next/image'
+import DropdownIcon from 'public/icons/ux/dropdown.svg'
 import {
   DropdownMenuItem,
   DropdownMenuContent,
@@ -13,16 +16,16 @@ import { useMediaQuery } from 'react-responsive'
 import { CSS } from '@stitches/react'
 
 type Options =
+  | 'Newest to Oldest'
+  | 'Oldest to Newest'
   | 'Price low to high'
   | 'Price high to low'
-  | 'Oldest First'
-  | 'Newest First'
 
 const options: { [x: string]: { sortBy: string; sortDirection: string } } = {
+  'Newest to Oldest': { sortBy: 'tokenId', sortDirection: 'desc' },
+  'Oldest to Newest': { sortBy: 'tokenId', sortDirection: 'asc' },
   'Price low to high': { sortBy: 'floorAskPrice', sortDirection: 'asc' },
   'Price high to low': { sortBy: 'floorAskPrice', sortDirection: 'desc' },
-  'Oldest First': { sortBy: 'rarity', sortDirection: 'asc' },
-  'Newest First': { sortBy: 'rarity', sortDirection: 'desc' },
 }
 
 type Props = {
@@ -32,29 +35,44 @@ type Props = {
 export const SortTokens: FC<Props> = ({ css }) => {
   const router = useRouter()
   const [sortSelection, setSortSelection] =
-    useState<Options>('Price low to high')
+    useState<Options>('Newest to Oldest')
 
   const isMounted = useMounted()
   const isSmallDevice = useMediaQuery({ maxWidth: 905 }) && isMounted
 
-  useEffect(() => {
-    const sortBy = router?.query['sortBy']?.toString()
-    const sortDirection = router?.query['sortDirection']?.toString()
+  const { isDense, toggleDense } = useGrid();
 
-    if (sortBy === 'rarity' && sortDirection === 'desc') {
-      setSortSelection('Newest First')
-      return
+
+  useEffect(() => {
+    const sortBy = router?.query['sortBy']?.toString();
+    const sortDirection = router?.query['sortDirection']?.toString();
+
+    // Check if sorting query parameters are not defined
+    if (!sortBy && !sortDirection) {
+      router.push({
+        query: {
+          ...router.query,
+          sortBy: options['Newest to Oldest'].sortBy,
+          sortDirection: options['Newest to Oldest'].sortDirection,
+        },
+      });
+      return;
     }
-    if (sortBy === 'rarity' && sortDirection === 'asc') {
-      setSortSelection('Oldest First')
-      return
+
+    if (sortBy === 'tokenId' && sortDirection === 'asc') {
+      setSortSelection('Oldest to Newest');
+      return;
+    }
+    if (sortBy === 'floorAskPrice' && sortDirection === 'asc') {
+      setSortSelection('Price low to high');
+      return;
     }
     if (sortBy === 'floorAskPrice' && sortDirection === 'desc') {
-      setSortSelection('Price high to low')
-      return
+      setSortSelection('Price high to low');
+      return;
     }
-    setSortSelection('Price low to high')
-  }, [router.query])
+    setSortSelection('Newest to Oldest');
+  }, [router.query]);
 
   return (
     <DropdownMenu.Root>
@@ -66,10 +84,7 @@ export const SortTokens: FC<Props> = ({ css }) => {
             textTransform: 'uppercase',
           }}
         >
-          {isSmallDevice ? (
-            <FontAwesomeIcon icon={faSort} width={16} height={16} />
-          ) : (
-            <>
+          
               <span>{sortSelection}</span>
               <Box
                 css={{
@@ -77,12 +92,15 @@ export const SortTokens: FC<Props> = ({ css }) => {
                   '[data-state=open] &': { transform: 'rotate(180deg)' },
                 }}
               >
-                <FontAwesomeIcon icon={faChevronDown} width={16} />
+                <Image src={DropdownIcon} alt="Dropdown Icon" width={30} />
               </Box>
-            </>
-          )}
+            
+          
         </Button>
       </DropdownMenu.Trigger>
+      <Box css={{ marginLeft: '16px', backgroundColor: '$gray3', borderRadius: '8px' }}>  {/* Adjust spacing as needed */}
+  <GridSwitcher checked={isDense} onChange={toggleDense} />
+</Box>
       <DropdownMenuContent css={{ width: '220px', mt: '$2', zIndex: 1000, fontFamily: 'SFCompactMedium', textTransform: 'uppercase', }}>
         {Object.keys(options).map((key) => (
           <DropdownMenuItem
@@ -108,7 +126,9 @@ export const SortTokens: FC<Props> = ({ css }) => {
             {key}
           </DropdownMenuItem>
         ))}
+        
       </DropdownMenuContent>
     </DropdownMenu.Root>
+    
   )
 }

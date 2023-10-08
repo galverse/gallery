@@ -10,6 +10,8 @@ import {
   faMagnifyingGlass,
   faChevronLeft,
 } from '@fortawesome/free-solid-svg-icons'
+import Image from 'next/image'
+import DropdownIcon from 'public/icons/ux/dropdown.svg'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import GlobalSearch from './GlobalSearch'
 
@@ -47,7 +49,7 @@ const MobileSearch = () => {
               },
             }}
           >
-            <FontAwesomeIcon icon={faChevronLeft} width={16} height={16} />
+            <Image src={DropdownIcon} alt="Dropdown Icon" width={30} />
           </Flex>
         </RadixDialog.Close>
       </Flex>

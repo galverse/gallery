@@ -5,6 +5,7 @@ import { useRef } from 'react'
 import { Box, Flex, Card } from '../primitives'
 import { useRouter } from 'next/router'
 import { useHotkeys } from 'react-hotkeys-hook'
+import GalverseLogo from 'public/home/logos/brand-logo.svg'
 import Link from 'next/link'
 import Image from 'next/image'
 import { ConnectWalletButton } from 'components/ConnectWalletButton'
@@ -67,7 +68,7 @@ const Navbar = () => {
           <Link href={`/${routePrefix}`}>
             <Box css={{ width: 200, cursor: 'pointer' }}>
               <Image
-                src="/galverseLogo.svg"
+                src={GalverseLogo}
                 width={200}
                 height={200}
                 alt="Galverse"
@@ -86,7 +87,8 @@ const Navbar = () => {
     <Flex
       css={{
         height: NAVBAR_HEIGHT,
-        px: '$5',
+        px: '$6',
+        
         '@xl': {
           px: '$6',
         },
@@ -114,9 +116,9 @@ const Navbar = () => {
       >
         <Flex align="center">
           <Link href={`/${routePrefix}`}>
-            <Box css={{ cursor: 'pointer' }}>
+            <Box css={{ cursor: 'pointer', alignItems: 'flex-start' }}>
               <Image
-                src="/galverseLogo.svg"
+                src={GalverseLogo}
                 width={200}
                 height={200}
                 alt="Galverse"
@@ -197,6 +199,7 @@ const Navbar = () => {
         align="center"
       >
         <Flex css={{ gap: '$5', mr: 12 }}>
+          {/*
         <a target="_blank" href={`https://www.galverse.art`}>
               <Box css={{ mr: '$2' }}>
                 <NavItem>Home</NavItem>
@@ -205,7 +208,7 @@ const Navbar = () => {
             <Link href={`/ethereum/collection/0x582048c4077a34e7c3799962f1f8c5342a3f4b12`}>
             <NavItem>Gallery</NavItem>
           </Link>
-          {/*<Box>
+          <Box>
             <HoverCard.Root openDelay={120}>
               <HoverCard.Trigger>
                 <a target="_blank" href={`https://www.galverse.art/`}>

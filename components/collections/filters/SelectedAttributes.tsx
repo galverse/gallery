@@ -1,5 +1,7 @@
 import { clearAllAttributes, removeParam } from 'utils/router'
 import { useRouter } from 'next/router'
+import Image from 'next/image'
+import smallClose from 'public/icons/ux/small-close.svg'
 import { FC, useEffect, useState } from 'react'
 import { Button, Flex, Text } from 'components/primitives'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -69,7 +71,7 @@ const SelectedAttributes: FC<Props> = ({ collection, mutate }) => {
           </Text>
           <Text style="subtitle1">{value}</Text>
           <Text css={{ color: '$gray9' }}>
-            <FontAwesomeIcon icon={faClose} width="16" height="16" />
+          <Image src={smallClose} alt="Close Button" />
           </Text>
         </Button>
       ))}

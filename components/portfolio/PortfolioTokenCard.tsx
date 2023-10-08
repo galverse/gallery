@@ -245,38 +245,78 @@ export default ({
       <Link
         href={`/${routePrefix}/asset/${token?.token?.contract}:${token?.token?.tokenId}`}
       >
+        {/* Dark overlay for hover effect */}
+    <Box css={{
+        position: 'absolute',
+        top: 0,
+        left: 0,
+        width: '100%',
+        height: '100%',
+        backgroundColor: 'rgba(0,0,0,0)',  // Transparent by default
+        transition: 'background-color 0.3s ease-in-out',
+        '&:hover': {
+            backgroundColor: 'rgba(0,0,0,0.3)'  // Darken on hover
+        }
+    }}>
+        {/* Overlay Text */}
         <Flex
-          css={{ p: '$4', minHeight: 132, cursor: 'pointer' }}
-          direction="column"
+            css={{
+                position: 'absolute',
+                top: '80%',
+                left: '50%',
+                flexDirection: 'column',
+                gap: '$1',
+                color: 'white',
+                zIndex: 1,
+                transform: 'translate(-50%, -50%)',
+                opacity: 0,  // Hidden by default
+                transition: 'opacity 0.3s ease-in-out',
+                '&:hover': {
+                    opacity: 1  // Show on hover
+                }
+            }}
         >
-          <Flex css={{ mb: '$4' }} align="center" justify="between">
-            <Flex align="center" css={{ gap: '$2', minWidth: 0 }}>
-              {collectionImage ? (
-                <Image
-                  style={{
-                    borderRadius: '4px',
-                    objectFit: 'cover',
-                    aspectRatio: '1/1',
-                  }}
-                  loader={({ src }) => src}
-                  src={collectionImage}
-                  alt={`${token?.token?.name}`}
-                  width={24}
-                  height={24}
-                />
-              ) : null}
-              <Text
+            <Text
+                style="h5"
+                as="p"
+                css={{
+                    fontWeight: 100,
+                    fontSize: '28px',
+                    maxWidth: '90%',
+                    whiteSpace: 'nowrap',
+                }}
+            >
+                {token?.token?.name}
+            </Text>
+            <Text
                 style="subtitle1"
                 as="p"
-                ellipsify
                 css={{
-                  pr: '$1',
-                  flex: 1,
+                    fontWeight: 600,
+                    color: '$gray11',
+                    margin: 'auto',
+                    maxWidth: '90%',
+                    whiteSpace: 'nowrap',
                 }}
+            >
+                {'NO. ' + token?.token?.tokenId}
+            </Text>
+            {/* Button */}
+            
+            <Box css={{marginTop: '$2', margin: 'auto'}}>
+            <Link
+        href={`/${routePrefix}/asset/${token?.token?.contract}:${token?.token?.tokenId}`}
+      >
+                      <Button
+                css={{ justifyContent: 'center', backgroundColor: '#000', width: 'auto', height: 'auto' }}
+                type="button"
+                size="small"
               >
-                {token?.token?.name || '#' + token?.token?.tokenId}{' '}
-              </Text>
-            </Flex>
+                VIEW PROFILE
+              </Button>
+              </Link>
+            </Box>
+            {/*
             {rarityEnabled &&
             token?.token?.kind !== 'erc1155' &&
             token?.token?.rarityRank ? (
@@ -330,7 +370,7 @@ export default ({
                 />
               )}
             </Box>
-
+                */}
             <>
               {token?.ownership?.floorAsk?.source?.name && (
                 <img
@@ -359,7 +399,7 @@ export default ({
               />
             </Flex>
           ) : null}
-        </Flex>
+        </Box>
       </Link>
       {!isOwner && token?.ownership?.floorAsk?.price?.amount ? (
         <Flex

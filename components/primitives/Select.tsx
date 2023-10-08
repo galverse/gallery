@@ -7,6 +7,8 @@ import React, {
 import { styled } from '../../stitches.config'
 import * as SelectPrimitive from '@radix-ui/react-select'
 import { faChevronDown } from '@fortawesome/free-solid-svg-icons'
+import Image from 'next/image'
+import DropdownIcon from 'public/icons/ux/dropdown.svg'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import Box from './Box'
 
@@ -67,7 +69,7 @@ const SelectDownIcon = forwardRef<
 >(({ ...props }, forwardedRef) => (
   <SelectPrimitive.Icon asChild ref={forwardedRef} {...props}>
     <Box css={{ color: '$neutralSolidHover', ml: '$3' }}>
-      <FontAwesomeIcon icon={faChevronDown} width="14" color="" />
+    <Image src={DropdownIcon} alt="Dropdown Icon" width={24} />
     </Box>
   </SelectPrimitive.Icon>
 ))

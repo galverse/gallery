@@ -238,7 +238,6 @@ const IndexPage: NextPage = () => {
                         </CopyText>
                       </Flex>
                     </Flex>
-                    <ChainToggle />
                   </Flex>
                   <Tabs.Root
                     defaultValue="items"

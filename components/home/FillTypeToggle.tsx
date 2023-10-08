@@ -11,6 +11,8 @@ import { Dropdown, DropdownMenuItem } from 'components/primitives/Dropdown'
 import { useMounted } from 'hooks'
 import { useMediaQuery } from 'react-responsive'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import Image from 'next/image'
+import DropdownIcon from 'public/icons/ux/dropdown.svg'
 import { faChevronDown } from '@fortawesome/free-solid-svg-icons'
 
 type Props = {
@@ -71,7 +73,7 @@ export const FillTypeToggle: FC<Props> = ({ fillType, setFillType }) => {
                 '[data-state=open] &': { transform: 'rotate(180deg)' },
               }}
             >
-              <FontAwesomeIcon icon={faChevronDown} width={16} />
+              <Image src={DropdownIcon} alt="Dropdown Icon" width={30} />
             </Box>
           </Button>
         }

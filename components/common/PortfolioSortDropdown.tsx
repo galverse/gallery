@@ -8,6 +8,8 @@ import * as DropdownMenu from '@radix-ui/react-dropdown-menu'
 import { FC, useEffect, useRef, useState } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faChevronDown } from '@fortawesome/free-solid-svg-icons'
+import Image from 'next/image'
+import DropdownIcon from 'public/icons/ux/dropdown.svg'
 import { useMediaQuery } from 'react-responsive'
 
 export type PortfolioSortingOption = NonNullable<
@@ -85,7 +87,7 @@ const PortfolioSortDropdown: FC<Props> = ({ option, onOptionSelected }) => {
               '[data-state=open] &': { transform: 'rotate(180deg)' },
             }}
           >
-            <FontAwesomeIcon icon={faChevronDown} width={16} />
+            <Image src={DropdownIcon} alt="Dropdown Icon" width={30} />
           </Box>
         </Button>
       </DropdownMenu.Trigger>

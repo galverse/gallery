@@ -21,7 +21,7 @@ import {
   faStore,
 } from '@fortawesome/free-solid-svg-icons'
 import CopyText from 'components/common/CopyText'
-import GalverseLogo from 'public/galverseLogo.svg'
+import GalverseLogo from 'public/home/logos/brand-logo.svg'
 import Link from 'next/link'
 // import Wallet from './Wallet'
 import { useRouter } from 'next/router'
@@ -231,14 +231,14 @@ export const AccountSidebar: FC = () => {
                   {/*<Wallet />*/}
 
                   <Flex
-                    css={{ m: 'auto', mt: '$5' }}
+                    css={{ m: 'auto' }}
                     justify="between"
                     align="center"
                   >
                      <Image
-                src="/galverseLogo.svg"
-                width={200}
-                height={200}
+                src={GalverseLogo}
+                width={376}
+                height={300}
                 alt="Galverse"
               />
                   {/*  <Text style="body1" css={{ mb: '$2', flex: 1 }} as="p">

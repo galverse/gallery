@@ -5,6 +5,8 @@ import {
 } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import * as Tabs from '@radix-ui/react-tabs'
+import Image from 'next/image'
+import DropdownIcon from 'public/icons/ux/dropdown.svg'
 import {
   TokenMedia,
   useAttributes,
@@ -167,7 +169,7 @@ const IndexPage: NextPage<Props> = ({ assetId, ssr }) => {
         </Text>
       )}
       <Text css={{ color: '$slate10' }}>
-        <FontAwesomeIcon icon={faChevronDown} width={16} height={16} />
+      <Image src={DropdownIcon} alt="Dropdown Icon" width={30} />
       </Text>
     </Button>
   )

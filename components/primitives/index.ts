@@ -3,6 +3,7 @@ export { default as Flex } from './Flex'
 export { Grid } from './Grid'
 export { default as Text } from './Text'
 export { default as Input } from './Input'
+export { default as GridSwitcher } from './GridSwitcher';
 export { default as Value } from './Value'
 export { default as Button } from './Button'
 export { default as Tooltip } from './Tooltip'

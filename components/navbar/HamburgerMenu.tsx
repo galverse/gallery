@@ -61,9 +61,9 @@ const HamburgerMenu = () => {
           <Link href="/">
             <Box css={{ width: 200, cursor: 'pointer' }}>
               <Image
-                src="/galverseLogo.svg"
-                width={200}
-                height={200}
+                src="/home/logos/brand-logo.svg"
+                width={300}
+                height={300}
                 alt="Galverse"
               />
             </Box>
@@ -214,12 +214,7 @@ const HamburgerMenu = () => {
             }}
           >
             <Flex direction="column">
-            <Image
-                src="/galverseLogo.svg"
-                width={200}
-                height={200}
-                alt="Galverse"
-              />
+            
             </Flex>
             <Box>
               <ConnectWalletButton />

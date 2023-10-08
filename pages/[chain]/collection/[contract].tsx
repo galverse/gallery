@@ -1,10 +1,12 @@
 import { GetServerSideProps, InferGetServerSidePropsType, NextPage } from 'next'
+import SearchIcon from 'public/icons/ux/search.svg'
 import {
   Text,
   Flex,
   Box,
   Input,
   FormatCrypto,
+  GridSwitcher,
 } from '../../../components/primitives'
 import {
   useCollections,
@@ -12,6 +14,8 @@ import {
   useDynamicTokens,
   useAttributes,
 } from '@reservoir0x/reservoir-kit-ui'
+import { useGrid } from 'context/GridContextProvider';
+import Image from 'next/image'
 import { paths } from '@reservoir0x/reservoir-sdk'
 import Layout from 'components/Layout'
 import { useEffect, useMemo, useRef, useState } from 'react'
@@ -75,6 +79,7 @@ type Props = InferGetServerSidePropsType<typeof getServerSideProps>
 
 const CollectionPage: NextPage<Props> = ({ id, ssr }) => {
   const router = useRouter()
+  const { isDense } = useGrid();
   const { address } = useAccount()
   const [attributeFiltersOpen, setAttributeFiltersOpen] = useState(false)
   const [activityFiltersOpen, setActivityFiltersOpen] = useState(true)
@@ -401,6 +406,7 @@ console.log(reservoirEvent.data.token);
                 }}
               >
                 <Flex css={{ gap: '$4', flex: 1 }} align="center">
+                  {/*
                   <Img
                     src={optimizeImage(collection.image!, 72 * 2)}
                     width={72}
@@ -652,10 +658,13 @@ console.log(reservoirEvent.data.token);
                               color: '$gray11',
                             }}
                           >
-                            <FontAwesomeIcon icon={faMagnifyingGlass} />
+                            <Image
+                                    src={SearchIcon}
+                                    alt="Search Icon"
+                                  />
                           </Box>
                           <Input
-                            css={{ pl: 42 }}
+                            css={{ pl: 48 }}
                             placeholder="Search by token ID"
                             onChange={(e) => {
                               setTokenSearchQuery(e.target.value)
@@ -712,6 +721,7 @@ console.log(reservoirEvent.data.token);
                     }}
                   >
                     <Flex css={{ gap: '$1' }}>
+                      {/*
                       <Text style="body1" as="p" color="subtle">
                         Floor
                       </Text>
@@ -739,19 +749,16 @@ console.log(reservoirEvent.data.token);
                       </Text>
                       <Text style="body1" as="p" css={{ fontWeight: '700' }}>
                         {Number(collection?.tokenCount)?.toLocaleString()}
-                      </Text>
+                      </Text>*/}
                     </Flex>
                   </Flex>
                   <Grid
                     css={{
                       gap: '$4',
                       pb: '$6',
-                      gridTemplateColumns:
-                        'repeat(auto-fill, minmax(200px, 1fr))',
-                      '@md': {
-                        gridTemplateColumns:
-                          'repeat(auto-fill, minmax(240px, 1fr))',
-                      },
+                      gridTemplateColumns: isDense
+                        ? 'repeat(auto-fill, minmax(400px, 1fr))'
+                        : 'repeat(auto-fill, minmax(250px, 1fr))',
                     }}
                   >
                     {isFetchingInitialData

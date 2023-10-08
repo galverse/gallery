@@ -14,7 +14,7 @@ type Props = {
  * @param description - The description of the page.
  */
 export const Head: FC<Props> = ({
-  ogImage = 'https://framerusercontent.com/images/Ecj25D9GMit9EjU2L5PBvWaLTrc.svg',
+  ogImage = '/brand-logo.svg',
   title = 'Shinsei Galverse - Gallery',
   description = 'A dedicated gallery to view all Galverse Gals in the collection.',
 }) => {

@@ -5,6 +5,7 @@ import Document, {
   NextScript,
   DocumentContext,
 } from 'next/document'
+import GalverseLogo from 'public/home/logos/brand-logo.svg'
 import { getCssText } from '../stitches.config'
 
 class MyDocument extends Document {
@@ -34,13 +35,13 @@ class MyDocument extends Document {
         {/* Favicon */}
         <link
           rel="shortcut icon"
-          type="image/svg"
-          href="/galverseLogo.png"
+          type="image/ico"
+          href="/favicon.ico"
         />
 
         {/* Reservoir meta tags */}
-        <meta property="reservoir:title" content="Reservoir NFT Explorer" />
-        <meta property="reservoir:icon" content="/reservoir-source-icon.png" />
+        <meta property="reservoir:title" content="Shinsei Galverse - Gallery" />
+        <meta property="reservoir:icon" content="/brand-logo.svg" />
         <meta
           property="reservoir:token-url-mainnet"
           content="/ethereum/asset/${contract}:${tokenId}"
