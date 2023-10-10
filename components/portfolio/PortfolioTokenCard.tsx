@@ -208,7 +208,7 @@ export default ({
       ) : null}
       <Link
         passHref
-        href={`/${routePrefix}/asset/${token?.token?.contract}:${token?.token?.tokenId}`}
+        href={`https://www.galverse.art/gal/${token?.token?.tokenId}`}
       >
         <Box css={{ background: '$gray3', overflow: 'hidden' }}>
           <TokenMedia
@@ -243,7 +243,7 @@ export default ({
         </Box>
       </Link>
       <Link
-        href={`/${routePrefix}/asset/${token?.token?.contract}:${token?.token?.tokenId}`}
+        href={`https://www.galverse.art/gal/${token?.token?.tokenId}`}
       >
         {/* Dark overlay for hover effect */}
     <Box css={{
@@ -262,7 +262,7 @@ export default ({
         <Flex
             css={{
                 position: 'absolute',
-                top: '80%',
+                top: '65%',
                 left: '50%',
                 flexDirection: 'column',
                 gap: '$1',
@@ -292,7 +292,10 @@ export default ({
                 style="subtitle1"
                 as="p"
                 css={{
+                    fontFamily: "SourceSans3-Regular",
                     fontWeight: 600,
+                    letterSpacing: '3%',
+                    fontSize: '14px',
                     color: '$gray11',
                     margin: 'auto',
                     maxWidth: '90%',
@@ -305,10 +308,10 @@ export default ({
             
             <Box css={{marginTop: '$2', margin: 'auto'}}>
             <Link
-        href={`/${routePrefix}/asset/${token?.token?.contract}:${token?.token?.tokenId}`}
+        href={`https://www.galverse.art/gal/${token?.token?.tokenId}`}
       >
                       <Button
-                css={{ justifyContent: 'center', backgroundColor: '#000', width: 'auto', height: 'auto' }}
+                css={{ justifyContent: 'center', backgroundColor: '#000', width: 'auto', height: 'auto', fontSize: '14px' }}
                 type="button"
                 size="small"
               >

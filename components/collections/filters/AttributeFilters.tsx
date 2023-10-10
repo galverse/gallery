@@ -107,7 +107,7 @@ const debouncedSearch = useDebounce(tokenSearchQuery, 500)
           <Image src={SearchIcon} alt="Search Icon" />
         </Box>
         <Input
-          css={{ pl: 48, backgroundColor: '$neutralBg', $$focusColor: 'none !important', }}
+          css={{ fontFamily: 'SFCompactMedium', pl: 48, backgroundColor: '$neutralBg', $$focusColor: 'none !important', }}
           placeholder="Find by token ID..."
           onChange={(e) => {
             setTokenSearchQuery(e.target.value);

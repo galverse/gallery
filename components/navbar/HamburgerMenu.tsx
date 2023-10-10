@@ -115,7 +115,7 @@ const HamburgerMenu = () => {
                       seed={jsNumberForAddress(address as string)}
                     />
                   )}
-                  <Text style="subtitle1" css={{ ml: '$2' }}>
+                  <Text style="h3" css={{ ml: '$2' }}>
                     {shortEnsName ? shortEnsName : shortAddress}
                   </Text>
                 </Flex>
@@ -134,47 +134,7 @@ const HamburgerMenu = () => {
                 My Gals
               </Text>
             </Link>
-            <Link href="/portfolio?tab=listings" legacyBehavior>
-              <Text
-                style="subtitle1"
-                css={{
-                  borderBottom: '1px solid $gray4',
-                  cursor: 'pointer',
-                  pb: '$4',
-                  pt: '24px',
-                }}
-              >
-                My Listings
-              </Text>
-            </Link>
-
-            <Link href="/portfolio?tab=offers" legacyBehavior>
-              <Text
-                style="subtitle1"
-                css={{
-                  borderBottom: '1px solid $gray4',
-                  cursor: 'pointer',
-                  pb: '$4',
-                  pt: '24px',
-                }}
-              >
-                My Offers Made
-              </Text>
-            </Link>
-            <Link href="/portfolio?tab=activity" legacyBehavior>
-              <Flex
-                direction="column"
-                css={{
-                  borderBottom: '1px solid $gray4',
-                  cursor: 'pointer',
-                  pb: '$4',
-                  pt: '24px',
-                  gap: '$1',
-                }}
-              >
-                <Text style="subtitle1">My Activity</Text>
-              </Flex>
-            </Link>
+            
            {/* <Wallet /> */}
             <Flex
               css={{

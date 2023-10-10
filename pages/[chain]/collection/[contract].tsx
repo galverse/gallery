@@ -724,8 +724,8 @@ const CollectionPage: NextPage<Props> = ({ id, ssr }) => {
                       gap: '$4',
                       pb: '$6',
                       gridTemplateColumns: isDense
-                        ? 'repeat(auto-fill, minmax(400px, 1fr))'
-                        : 'repeat(auto-fill, minmax(250px, 1fr))',
+                        ? 'repeat(auto-fill, minmax(250px, 1fr))'
+                        : 'repeat(auto-fill, minmax(180px, 1fr))',
                     }}
                   >
                     {isFetchingInitialData

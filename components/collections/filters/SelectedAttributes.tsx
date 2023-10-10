@@ -62,11 +62,11 @@ const SelectedAttributes: FC<Props> = ({ collection, mutate }) => {
           onClick={() => {
             removeParam(router, `attributes[${key}]`, value)
           }}
-          color="gray3"
+          color="gray4"
           css={{ mr: '$3' }}
           size="small"
         >
-          <Text style="body1" css={{ color: '$gray9' }}>
+          <Text style="body1" css={{ color: '$gray11' }}>
             {key}:
           </Text>
           <Text style="subtitle1">{value}</Text>
@@ -84,6 +84,7 @@ const SelectedAttributes: FC<Props> = ({ collection, mutate }) => {
           color="ghost"
           css={{
             color: '$primary11',
+            fontFamily: 'bureauGrotMedium',
             fontWeight: 500,
             textTransform: 'uppercase',
             px: '$4',

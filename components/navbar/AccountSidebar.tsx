@@ -137,7 +137,7 @@ export const AccountSidebar: FC = () => {
                             cursor: 'pointer',
                           }}
                         >
-                          <Text style="body1">
+                          <Text style="h3">
                             {shortEnsName ? shortEnsName : shortAddress}
                           </Text>
                           {!shortEnsName ? (
@@ -195,36 +195,9 @@ export const AccountSidebar: FC = () => {
                           cursor: 'pointer',
                         }}
                       >
-                        <FontAwesomeIcon icon={faList} />
-                        <Text style="body1">My Listings</Text>
-                      </Flex>
-                    </Link>
-                    <Link href="/portfolio?tab=offers" replace={true}>
-                      <Flex
-                        align="center"
-                        css={{
-                          gap: 6,
-                          p: '$3',
-                          color: '$gray10',
-                          cursor: 'pointer',
-                        }}
-                      >
-                        <FontAwesomeIcon icon={faHand} />
-                        <Text style="body1">My Offers Made</Text>
-                      </Flex>
-                    </Link>
-                    <Link href="/portfolio?tab=activity" replace={true}>
-                      <Flex
-                        align="center"
-                        css={{
-                          gap: 6,
-                          p: '$3',
-                          color: '$gray10',
-                          cursor: 'pointer',
-                        }}
-                      >
-                        <FontAwesomeIcon icon={faChartLine} />
-                        <Text style="body1">My Activity</Text>
+                        
+                        
+                        
                       </Flex>
                     </Link>
                   </Grid>

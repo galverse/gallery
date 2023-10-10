@@ -193,7 +193,7 @@ export const TokenTable = forwardRef<TokenTableRef, Props>(
           </Flex>
         ) : (
           <Flex direction="column" css={{ width: '100%' }}>
-            {isLoading ? null : itemView === 'list' ? (
+            {isLoading ? null : itemView === 'grid' ? (
               <>
                 <TableHeading isOwner={isOwner} />
                 {tokens.map((token, i) => {
@@ -353,7 +353,7 @@ const TokenTableRow: FC<TokenTableRowProps> = ({
         }}
       >
         <Link
-          href={`/${routePrefix}/asset/${token?.token?.contract}:${token?.token?.tokenId}`}
+          href={`https://www.galverse.art/gal/${token?.token?.tokenId}`}
         >
           <Flex align="center">
             {imageSrc && (
@@ -664,7 +664,7 @@ const TokenTableRow: FC<TokenTableRowProps> = ({
             />
           ) : null}
           <Link
-            href={`/${routePrefix}/asset/${token?.token?.contract}:${token?.token?.tokenId}`}
+            href={`https://www.galverse.art/gal/${token?.token?.tokenId}`}
           >
             <Flex align="center">
               {imageSrc && (

@@ -60,11 +60,13 @@ const PortfolioSortDropdown: FC<Props> = ({ option, onOptionSelected }) => {
   }, [])
 
   return (
+    
     <DropdownMenu.Root>
       <DropdownMenu.Trigger asChild>
         <Button
           color="gray3"
           css={{
+            display: 'none',
             px: '14px',
             justifyContent: 'space-between',
             width: '100%',

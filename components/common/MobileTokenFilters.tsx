@@ -32,6 +32,7 @@ export const MobileTokenFilters: FC<Props> = ({
   const triggerRef = useRef<HTMLButtonElement>(null)
 
   const trigger = (
+    
     <Flex
       justify="center"
       css={{
@@ -41,7 +42,7 @@ export const MobileTokenFilters: FC<Props> = ({
         width: '100vw',
         zIndex: 99,
       }}
-    >
+    >{/*
       <Button
         ref={triggerRef}
         css={{
@@ -57,7 +58,7 @@ export const MobileTokenFilters: FC<Props> = ({
         corners="pill"
         color="gray3"
       >
-        <Text style="h6">Filter</Text>
+        <Text style="h6">Filter!</Text>
         {filterCollection && (
           <Flex
             justify="center"
@@ -74,7 +75,7 @@ export const MobileTokenFilters: FC<Props> = ({
             1
           </Flex>
         )}
-      </Button>
+          </Button>*/}
     </Flex>
   )
 

@@ -173,7 +173,7 @@ export default ({
       </Flex>
       <Link
         passHref
-        href={`/${routePrefix}/asset/${token?.token?.contract}:${token?.token?.tokenId}`}
+        href={`https://www.galverse.art/gal/${token?.token?.tokenId}`}
       >
         <Box css={{ position: 'relative', background: '$gray3', overflow: 'hidden', transition: 'all 0.9s ease-in-out' }}>
     {/* Token Image */}
@@ -209,7 +209,7 @@ export default ({
         </Box>
       </Link>
       <Link
-        href={`/${routePrefix}/asset/${token?.token?.contract}:${token?.token?.tokenId}`}
+        href={`https://www.galverse.art/gal/${token?.token?.tokenId}`}
       >
         <Flex
           css={{ cursor: 'pointer' }}
@@ -233,7 +233,7 @@ export default ({
         <Flex
             css={{
                 position: 'absolute',
-                top: '80%',
+                top: '65%',
                 left: '50%',
                 flexDirection: 'column',
                 gap: '$1',
@@ -251,8 +251,9 @@ export default ({
                 style="h5"
                 as="p"
                 css={{
-                    fontWeight: 100,
-                    fontSize: '28px',
+                    fontFamily: "BureauGrotCondensedBook",
+                    fontWeight: 350,
+                    fontSize: '24px',
                     maxWidth: '90%',
                     whiteSpace: 'nowrap',
                 }}
@@ -263,7 +264,10 @@ export default ({
                 style="subtitle1"
                 as="p"
                 css={{
+                    fontFamily: "SourceSans3-Regular",
                     fontWeight: 600,
+                    letterSpacing: '3%',
+                    fontSize: '14px',
                     color: '$gray11',
                     margin: 'auto',
                     maxWidth: '90%',
@@ -276,10 +280,10 @@ export default ({
             
             <Box css={{marginTop: '$2', margin: 'auto'}}>
             <Link
-        href={`/${routePrefix}/asset/${token?.token?.contract}:${token?.token?.tokenId}`}
+        href={`https://www.galverse.art/gal/${token?.token?.tokenId}`}
       >
                       <Button
-                css={{ justifyContent: 'center', backgroundColor: '#000', width: 'auto', height: 'auto' }}
+                css={{ justifyContent: 'center', backgroundColor: '#000', width: 'auto', height: 'auto', fontSize: '14px' }}
                 type="button"
                 size="small"
               >

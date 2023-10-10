@@ -215,13 +215,13 @@ const IndexPage: NextPage = () => {
                         />
                       )}
                       <Flex direction="column" css={{ ml: '$4' }}>
-                        <Text style="h5" as="h5">
+                        <Text style="h3" as="h3">
                           {resolvedEnsName ? resolvedEnsName : shortAddress}
                         </Text>
                         <CopyText text={address as string}>
                           <Flex align="center" css={{ cursor: 'pointer' }}>
                             <Text
-                              style="subtitle2"
+                              style="body2"
                               color="subtle"
                               css={{ mr: '$1' }}
                             >
@@ -256,10 +256,10 @@ const IndexPage: NextPage = () => {
                           width: '100%',
                         }}
                       >
-                        <TabsTrigger value="items">My Gals</TabsTrigger>
-                        <TabsTrigger value="listings">My Listings</TabsTrigger>
+                        <TabsTrigger value="items">MY GALS</TabsTrigger>
+                     {/*   <TabsTrigger value="listings">My Listings</TabsTrigger>
                         <TabsTrigger value="offers">My Offers Made</TabsTrigger>
-                        <TabsTrigger value="activity">My Activity</TabsTrigger>
+                      <TabsTrigger value="activity">My Activity</TabsTrigger> */}
                       </TabsList>
                     </Flex>
 
@@ -304,39 +304,12 @@ const IndexPage: NextPage = () => {
                                   setSortByType(option)
                                 }}
                               />
-                              <ViewToggle
-                                itemView={itemView}
-                                setItemView={setItemView}
-                              />
+                              
                             </Flex>
                           )}
+                          
                           <Flex justify="between" css={{ marginBottom: '$4' }}>
-                            {!isSmallDevice &&
-                              !collectionsLoading &&
-                              collections.length > 0 && (
-                                <FilterButton
-                                  open={tokenFiltersOpen}
-                                  setOpen={setTokenFiltersOpen}
-                                />
-                              )}
-                            {!isSmallDevice && !collectionsLoading && (
-                              <Flex
-                                align="start"
-                                justify="between"
-                                css={{ gap: '$3' }}
-                              >
-                                <PortfolioSortDropdown
-                                  option={sortByType}
-                                  onOptionSelected={(option) => {
-                                    setSortByType(option)
-                                  }}
-                                />
-                                <ViewToggle
-                                  itemView={itemView}
-                                  setItemView={setItemView}
-                                />
-                              </Flex>
-                            )}
+                       
                           </Flex>
                           <TokenTable
                             ref={tokenTableRef}
@@ -389,17 +362,7 @@ const IndexPage: NextPage = () => {
                             pb: '$5',
                           }}
                         >
-                          {isSmallDevice ? (
-                            <MobileActivityFilters
-                              activityTypes={activityTypes}
-                              setActivityTypes={setActivityTypes}
-                            />
-                          ) : (
-                            <FilterButton
-                              open={activityFiltersOpen}
-                              setOpen={setActivityFiltersOpen}
-                            />
-                          )}
+                          
                           <UserActivityTable
                             user={address}
                             activityTypes={activityTypes}

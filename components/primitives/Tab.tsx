@@ -12,7 +12,7 @@ const TabsList = styled(TabsPrimitive.List, {
 const TabsTrigger = styled(TabsPrimitive.Trigger, {
   fontWeight: '100',
   textTransform: 'uppercase',
-  fontFamily: 'BureauGrot',
+  fontFamily: 'bureauGrotMedium',
   letterSpacing: '1.2px',
   pb: '$3',
   '&[data-state="active"]': {

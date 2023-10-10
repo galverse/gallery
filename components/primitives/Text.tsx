@@ -4,6 +4,7 @@ export default styled('span', {
   color: '$gray12',
   fontFamily: '$body',
   letterSpacing: 0,
+  
 
   variants: {
     style: {
@@ -12,7 +13,8 @@ export default styled('span', {
         fontSize: 48,
       },
       h3: {
-        fontWeight: 800,
+        fontFamily: "AldotheApache",
+        fontWeight: 400,
         fontSize: 32,
       },
       h4: {
@@ -22,11 +24,11 @@ export default styled('span', {
         textTransform: "uppercase",
       },
       h5: {
-        fontWeight: 600,
+        fontWeight: 500,
         fontSize: 20,
         fontFamily: "BureauGrot",
         textTransform: "uppercase",
-        letterSpacing: ".07em",
+        letterSpacing: ".03em",
         lineHeight: "19.24px",
       },
       h6: {
@@ -40,6 +42,14 @@ export default styled('span', {
       h7: {
         fontWeight: 700,
         fontSize: 18,
+      },
+      attributes: {
+        fontWeight: 900,
+        fontSize: 16,
+        fontFamily: "Bureau_Grot_Wide_Ultra_Black",
+        textTransform: "uppercase",
+        letterSpacing: ".07em",
+        lineHeight: "19.24px",
       },
       subtitle1: {
         fontWeight: 400,
@@ -56,14 +66,22 @@ export default styled('span', {
         fontSize: 12,
       },
       body1: {
-        fontWeight: 400,
+        fontWeight: 500,
+        color: 'white',
         fontSize: 14,
+        fontFamily: "SFCompactThin",
+        textTransform: "uppercase",
+        letterSpacing: "0.07em",
+        lineHeight: "19.32px",
+    },
+      body2: {
+        fontWeight: 500,
+        color: 'white',
+        fontSize: 18,
         fontFamily: "SFCompactMedium",
         textTransform: "uppercase",
-      },
-      body2: {
-        fontWeight: 400,
-        fontSize: 14,
+        letterSpacing: "0.07em",
+        lineHeight: "19.32px",
       },
       body3: {
         fontWeight: 100,

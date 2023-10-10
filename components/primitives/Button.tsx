@@ -28,7 +28,7 @@ const Button = styled('button', {
         backgroundColor: '$neutralBG',
         fontFamily: 'SFCompactThin',
         textTransform: 'uppercase',
-        boxShadow: '0 0 0 2px var(---focusColor)',
+        boxShadow: '0 0 0 2px #A9A7B1',
         color: 'white',
         '&:hover': {
           backgroundColor: '$neutralBgSubtle',
@@ -45,17 +45,23 @@ const Button = styled('button', {
         backgroundColor: '$neutralBG',
         color: '$gray12',
         margin: '2px 2px 2px 2px',
-        boxShadow: '0 0 0 2px var(---focusColor)',
+        padding: '4px 20px 4px 20px',
+        boxShadow: '0 0 0 2px #A9A7B1',
         '&:hover': {
           backgroundColor: '$gray4',
         },
+        
       },
       gray4: {
-        backgroundColor: '$gray4',
+        backgroundColor: '$neutralBG',
         color: '$gray12',
+        margin: '8px 8px 8px 8px',
+        padding: '1px 10px 1px 10px',
+        boxShadow: '0 0 0 2px #A9A7B1',
         '&:hover': {
-          backgroundColor: '$gray5',
+          backgroundColor: '$gray4',
         },
+        
       },
       ghost: {
         backgroundColor: 'transparent',

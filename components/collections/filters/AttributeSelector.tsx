@@ -190,8 +190,8 @@ const transformedKey = attributeNameToFilename(attribute.key);
         
         <Flex align="center" css={{ gap: '$3' }}>
         
-<Image src={attributeIcons[transformedKey]} alt={`${attribute.key} icon`} width={20} height={20} />
-  <Text as="h5" style="h5" ellipsify>
+<Image src={attributeIcons[transformedKey]} alt={`${attribute.key} icon`} width={32} height={32} />
+  <Text style="attributes" ellipsify>
     {attribute.key}
   </Text>
 </Flex>
