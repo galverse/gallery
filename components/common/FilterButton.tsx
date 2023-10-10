@@ -12,7 +12,7 @@ type Props = {
 export const FilterButton: FC<Props> = ({ open, setOpen }) => {
   return (
     <Button
-      css={{ justifyContent: 'center', width: '86px', height: '86px' }}
+      css={{ zIndex: '9999', justifyContent: 'start',  height: '86px' }}
       type="button"
       onClick={() => setOpen(!open)}
       size="small"

@@ -321,7 +321,7 @@ const IndexPage: NextPage = () => {
                               )}
                             {!isSmallDevice && !collectionsLoading && (
                               <Flex
-                                align="center"
+                                align="start"
                                 justify="between"
                                 css={{ gap: '$3' }}
                               >

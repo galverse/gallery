@@ -60,6 +60,18 @@ export default ({
   const tokenIsInCart = token && token?.isInCart
   const isOwner = token?.token?.owner?.toLowerCase() !== address?.toLowerCase()
 
+  const getLogoURL = (sourceDomain: string | undefined) => {
+    switch (sourceDomain) {
+      case 'blur.io':
+        return '/home/logos/blur-logo.png';
+      case 'opensea.io':
+        return '/home/logos/os-logo.png';
+      default:
+        return `${proxyApi}/redirect/sources/${sourceDomain}/logo/v2`;
+    }
+  };
+  
+
   const is1155 = token?.token?.kind === 'erc1155'
 
   return (
@@ -359,6 +371,7 @@ export default ({
                   </Text>
                 ) : null}
                     </Flex>*/}
+                    
 
               {showSource && token?.market?.floorAsk?.source?.name ? (
                 
@@ -375,12 +388,12 @@ export default ({
                     borderRadius: '50%',
                   }}
                   onClick={(e) => {
-                    e.preventDefault()
-                    e.stopPropagation()
-                    const url = `${proxyApi}/redirect/sources/${token?.market?.floorAsk?.source?.domain}/tokens/${token?.token?.contract}:${token?.token?.tokenId}/link/v2`
-                    window.open(url, '_blank')
+                    e.preventDefault();
+                    e.stopPropagation();
+                    const url = `${proxyApi}/redirect/sources/${token?.market?.floorAsk?.source?.domain}/tokens/${token?.token?.contract}:${token?.token?.tokenId}/link/v2`;
+                    window.open(url, '_blank');
                   }}
-                  src={`${proxyApi}/redirect/sources/${token?.market?.floorAsk?.source?.domain}/logo/v2`}
+                  src={getLogoURL(token?.market?.floorAsk?.source?.domain as string | undefined)}
                 />
               ) : null}
           {/*{token?.token?.lastSale?.price?.amount?.decimal ? (

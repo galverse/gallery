@@ -37,7 +37,8 @@ import {
 } from '@reservoir0x/reservoir-kit-ui'
 import { FC, useContext, useEffect, useState } from 'react'
 import { HotkeysProvider } from 'react-hotkeys-hook'
-import { GridProvider } from 'context/GridContextProvider';
+import { SearchProvider } from 'context/SearchContextProvider'
+import { GridProvider } from 'context/GridContextProvider'
 import ToastContextProvider from 'context/ToastContextProvider'
 import supportedChains from 'utils/chains'
 import { useMarketplaceChain } from 'hooks'
@@ -96,6 +97,7 @@ function AppWrapper(props: AppProps & { baseUrl: string }) {
     >
       <WagmiConfig config={wagmiClient}>
         <ChainContextProvider>
+        <SearchProvider>
         <GridProvider>
           <AnalyticsProvider>
             <ErrorTrackingProvider>
@@ -105,6 +107,7 @@ function AppWrapper(props: AppProps & { baseUrl: string }) {
             </ErrorTrackingProvider>
           </AnalyticsProvider>
           </GridProvider>
+          </SearchProvider>
         </ChainContextProvider>
       </WagmiConfig>
     </ThemeProvider>

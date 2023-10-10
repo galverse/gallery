@@ -1,5 +1,6 @@
 import { GetServerSideProps, InferGetServerSidePropsType, NextPage } from 'next'
 import SearchIcon from 'public/icons/ux/search.svg'
+import { useSearch } from 'context/SearchContextProvider';
 import {
   Text,
   Flex,
@@ -83,7 +84,7 @@ const CollectionPage: NextPage<Props> = ({ id, ssr }) => {
   const { address } = useAccount()
   const [attributeFiltersOpen, setAttributeFiltersOpen] = useState(false)
   const [activityFiltersOpen, setActivityFiltersOpen] = useState(true)
-  const [tokenSearchQuery, setTokenSearchQuery] = useState<string>('')
+  const { tokenSearchQuery } = useSearch();
   const chainCurrency = useChainCurrency()
   const debouncedSearch = useDebounce(tokenSearchQuery, 500)
   const [socketState, setSocketState] = useState<SocketState>(null)
@@ -142,76 +143,69 @@ const CollectionPage: NextPage<Props> = ({ id, ssr }) => {
           mintData?.price?.amount?.decimal
         } ${mintData?.price?.currency?.symbol?.toUpperCase()}`
 
-  let tokenQuery: Parameters<typeof useDynamicTokens>['0'] = {
-    limit: 20,
-    collection: id,
-    sortBy: 'floorAskPrice',
-    sortDirection: 'asc',
-    includeQuantity: true,
-    includeLastSale: true,
-    ...(debouncedSearch.length > 0 && {
-      tokenName: debouncedSearch,
-    }),
-  }
-
-  const sortDirection = router.query['sortDirection']?.toString()
-  const sortBy = router.query['sortBy']?.toString()
-
-  if (sortBy === 'tokenId' || sortBy === 'rarity') tokenQuery.sortBy = sortBy
-  if (sortDirection === 'desc') tokenQuery.sortDirection = 'desc'
-
-  // Extract all queries of attribute type
-  Object.keys({ ...router.query }).map((key) => {
-    if (
-      key.startsWith('attributes[') &&
-      key.endsWith(']') &&
-      router.query[key] !== ''
-    ) {
-      //@ts-ignore
-      tokenQuery[key] = router.query[key]
-    }
-  })
-
-  const {
-    data: tokens,
-    mutate,
-    fetchNextPage,
-    setSize,
-    resetCache,
-    isFetchingInitialData,
-    isFetchingPage,
-    hasNextPage,
-  } = useDynamicTokens(tokenQuery, {
-    fallbackData: initialTokenFallbackData ? [ssr.tokens] : undefined,
-  })
-
-  useTokenUpdateStream(id as string, collectionChain.id, {
-    onClose: () => setSocketState(0),
-    onOpen: () => setSocketState(1),
-    onMessage: ({
-      data: reservoirEvent,
-    }: MessageEvent<ReservoirWebsocketIncomingEvent>) => {
-      if (Object.keys(router.query).some((key) => key.includes('attribute')))
-        return
-
-      const tokenName = reservoirEvent.data.token.name || ''
-      if (
-        tokenSearchQuery &&
-        tokenSearchQuery.length > 0 &&
-        !tokenName.includes(tokenSearchQuery)
-      ) {
-        return
+        let tokenQuery: Parameters<typeof useDynamicTokens>['0'] = {
+          limit: 20,
+          sortDirection: 'asc'
+      };
+      
+      if (debouncedSearch && debouncedSearch.length > 0) {
+          tokenQuery.tokens = [`${id}:${debouncedSearch}`];
+      } else {
+          tokenQuery.collection = id;
       }
-
-      const tokenId = reservoirEvent.data.token.tokenId.toString() || '' // Convert the ID to a string
-if (
-    tokenSearchQuery &&
-    tokenSearchQuery.length > 0 &&
-    !tokenId.includes(tokenSearchQuery)  // Match against tokenId
-) {
-    return
-}
-console.log(reservoirEvent.data.token);
+      
+        
+        const sortDirection = router.query['sortDirection']?.toString()
+        const sortBy = router.query['sortBy']?.toString()
+        
+        if (sortBy === 'tokenId' || sortBy === 'rarity') tokenQuery.sortBy = sortBy
+        if (sortDirection === 'desc') tokenQuery.sortDirection = 'desc'
+        
+        // Extract all queries of attribute type
+        Object.keys({ ...router.query }).map((key) => {
+          if (
+            key.startsWith('attributes[') &&
+            key.endsWith(']') &&
+            router.query[key] !== ''
+          ) {
+            //@ts-ignore
+            tokenQuery[key] = router.query[key]
+          }
+        })
+        
+        const {
+          data: tokens,
+          mutate,
+          fetchNextPage,
+          setSize,
+          resetCache,
+          isFetchingInitialData,
+          isFetchingPage,
+          hasNextPage,
+        } = useDynamicTokens(tokenQuery, {
+          fallbackData: initialTokenFallbackData ? [ssr.tokens] : undefined,
+        })
+        
+        useTokenUpdateStream(id as string, collectionChain.id, {
+          onClose: () => setSocketState(0),
+          onOpen: () => setSocketState(1),
+          onMessage: ({
+            data: reservoirEvent,
+          }: MessageEvent<ReservoirWebsocketIncomingEvent>) => {
+            if (Object.keys(router.query).some((key) => key.includes('attribute')))
+              return
+        
+            const tokenId = reservoirEvent.data.token.tokenId.toString() || '' // Convert the ID to a string
+            if (
+              tokenSearchQuery &&
+              tokenSearchQuery.length > 0 &&
+              !tokenId.includes(tokenSearchQuery)  // Match against tokenId
+            ) {
+              return
+            }
+            console.log(reservoirEvent.data.token);
+        
+        
 
       let hasChange = false
 
@@ -642,37 +636,10 @@ console.log(reservoirEvent.data.token);
                           <FilterButton
                             open={attributeFiltersOpen}
                             setOpen={setAttributeFiltersOpen}
-                          />
+                          /> 
                         )}
-                      {!isSmallDevice && (
-                        <Box
-                          css={{ position: 'relative', flex: 1, maxWidth: 420 }}
-                        >
-                          <Box
-                            css={{
-                              position: 'absolute',
-                              top: '50%',
-                              left: '$4',
-                              zIndex: 2,
-                              transform: 'translate(0, -50%)',
-                              color: '$gray11',
-                            }}
-                          >
-                            <Image
-                                    src={SearchIcon}
-                                    alt="Search Icon"
-                                  />
-                          </Box>
-                          <Input
-                            css={{ pl: 48 }}
-                            placeholder="Search by token ID"
-                            onChange={(e) => {
-                              setTokenSearchQuery(e.target.value)
-                            }}
-                            value={tokenSearchQuery}
-                          />
-                        </Box>
-                      )}
+                      <Text style='h5' as='h5' css={{
+                        ml: '10px',}}>8,888 Gals</Text>
                     </Flex>
                     {socketState !== null && <LiveState />}
                     <Flex
@@ -906,8 +873,6 @@ export const getServerSideProps: GetServerSideProps<{
   let collectionQuery: paths['/collections/v7']['get']['parameters']['query'] =
     {
       id,
-      includeSalesCount: true,
-      normalizeRoyalties: NORMALIZE_ROYALTIES,
     }
 
   const collectionsPromise = fetcher(
@@ -917,16 +882,10 @@ export const getServerSideProps: GetServerSideProps<{
   )
 
   let tokensQuery: paths['/tokens/v6']['get']['parameters']['query'] = {
-    collection: id,
-    sortBy: 'floorAskPrice',
     sortDirection: 'asc',
     limit: 20,
-    normalizeRoyalties: NORMALIZE_ROYALTIES,
-    includeDynamicPricing: true,
-    includeAttributes: true,
-    includeQuantity: true,
-    includeLastSale: true,
   }
+  
 
   const tokensPromise = fetcher(
     `${reservoirBaseUrl}/tokens/v6`,
