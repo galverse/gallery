@@ -22,8 +22,14 @@ import { createStitches } from '@stitches/react'
 import type * as Stitches from '@stitches/react'
 import { reset } from 'utils/css/reset'
 import { Inter } from '@next/font/google'
+import { Space_Mono } from '@next/font/google'
 
 const inter = Inter({
+  weight: ['400'],
+  subsets: ['latin'],
+})
+
+const SpaceMono = Space_Mono({
   weight: ['400'],
   subsets: ['latin'],
 })
@@ -130,6 +136,7 @@ export const { createTheme, keyframes, styled, globalCss, getCssText } =
     },
     fonts: {
         default: "'BureauGrot', sans-serif",
+        space: "'Space Mono', sans-serif",
         button: '$default',
     },
     lineHeights: {
@@ -303,6 +310,8 @@ export const darkTheme = createTheme({
     gray12: '$slate12',
 
     accent: '#7000FF',
+    shadow: '#1D1D1D',
+    shadowText: '#FAFAFA',
 
     neutralBgSubtle: '$gray3',
     neutralBg: '$gray1',

@@ -245,10 +245,6 @@ const IndexPage: NextPage = () => {
                     onValueChange={(value) => setTabValue(value)}
                   >
                     <Flex
-                      css={{
-                        overflowX: 'scroll',
-                        '@sm': { overflowX: 'auto' },
-                      }}
                     >
                       <TabsList
                         style={{
@@ -256,7 +252,7 @@ const IndexPage: NextPage = () => {
                           width: '100%',
                         }}
                       >
-                        <TabsTrigger value="items">MY GALS</TabsTrigger>
+                        <TabsTrigger value="items">MY COLLECTION</TabsTrigger>
                      {/*   <TabsTrigger value="listings">My Listings</TabsTrigger>
                         <TabsTrigger value="offers">My Offers Made</TabsTrigger>
                       <TabsTrigger value="activity">My Activity</TabsTrigger> */}

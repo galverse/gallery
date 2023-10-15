@@ -60,8 +60,15 @@ const Button = styled('button', {
         boxShadow: '0 0 0 2px #A9A7B1',
         '&:hover': {
           backgroundColor: '$gray4',
-        },
-        
+        },        
+      },
+      emptyPortfolio: {
+        backgroundColor: '#343333',
+        border: '1px solid #484747',
+        fontFamily: 'bureauGrotMedium',
+        fontSize: '14px',
+        letterSpacing: '2.72px',
+        fontWeight: '100',
       },
       ghost: {
         backgroundColor: 'transparent',

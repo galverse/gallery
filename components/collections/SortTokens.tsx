@@ -2,6 +2,8 @@ import { Box, Button, GridSwitcher } from 'components/primitives'
 import { useGrid } from 'context/GridContextProvider';
 import Image from 'next/image'
 import DropdownIcon from 'public/icons/ux/dropdown.svg'
+import MobileSort from 'public/icons/ux/mobile-sort.svg'
+
 import {
   DropdownMenuItem,
   DropdownMenuContent,
@@ -38,7 +40,7 @@ export const SortTokens: FC<Props> = ({ css }) => {
     useState<Options>('Newest to Oldest')
 
   const isMounted = useMounted()
-  const isSmallDevice = useMediaQuery({ maxWidth: 905 }) && isMounted
+  const isSmallDevice = useMediaQuery({ maxWidth: 600 })
 
   const { isDense, toggleDense } = useGrid();
 
@@ -77,26 +79,30 @@ export const SortTokens: FC<Props> = ({ css }) => {
   return (
     <DropdownMenu.Root>
       <DropdownMenu.Trigger asChild>
-        <Button
-          color="gray3"
-          css={{
-            fontFamily: 'SFCompactMedium',
-            textTransform: 'uppercase',
-          }}
-        >
-          
-              <span>{sortSelection}</span>
-              <Box
-                css={{
-                  transition: 'transform',
-                  '[data-state=open] &': { transform: 'rotate(180deg)' },
-                }}
-              >
-                <Image src={DropdownIcon} alt="Dropdown Icon" width={30} />
-              </Box>
-            
-          
-        </Button>
+      <Button
+  color="gray3"
+  size={isSmallDevice ? 'small' : undefined}
+  css={{
+    fontFamily: 'SFCompactMedium',
+    textTransform: 'uppercase',
+    padding: isSmallDevice ? '8px' : undefined
+  }}
+>
+  { !isSmallDevice && <span>{sortSelection}</span> }
+  <Box
+    css={{
+      transition: 'transform',
+      '[data-state=open] &': { transform: 'rotate(180deg)' },
+    }}
+  >
+    {isSmallDevice ? (
+      <Image src={MobileSort} alt="Dropdown Icon" width={30} />
+    ) : (
+      <Image src={DropdownIcon} alt="Dropdown Icon" width={30} />
+    )}
+  </Box>
+</Button>
+
       </DropdownMenu.Trigger>
       <Box css={{ marginLeft: '16px', backgroundColor: '$gray3', borderRadius: '8px' }}>  {/* Adjust spacing as needed */}
   <GridSwitcher checked={isDense} onChange={toggleDense} />

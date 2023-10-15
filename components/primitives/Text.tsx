@@ -1,5 +1,6 @@
 import { styled } from 'stitches.config'
 
+
 export default styled('span', {
   color: '$gray12',
   fontFamily: '$body',

@@ -5,6 +5,7 @@ import {
   TokenMedia,
   useDynamicTokens,
 } from '@reservoir0x/reservoir-kit-ui'
+import { useGrid } from 'context/GridContextProvider';
 import AddToCart from 'components/buttons/AddToCart'
 import BuyNow from 'components/buttons/BuyNow'
 import {
@@ -73,18 +74,21 @@ export default ({
   
 
   const is1155 = token?.token?.kind === 'erc1155'
+  const { isDense } = useGrid();
+
 
   return (
+    
     <Box
       css={{
         borderRadius: 8,
         overflow: 'hidden',
         background: '$neutralBgSubtle',
         $$shadowColor: '$colors$panelShadow',
-        boxShadow: '0 8px 12px 0px $$shadowColor',
+        boxShadow: '0px 6px 12px 0px rgba(0, 0, 0, 0.11), 0px 23px 23px 0px rgba(0, 0, 0, 0.09), 0px 51px 31px 0px rgba(0, 0, 0, 0.05), 0px 90px 36px 0px rgba(0, 0, 0, 0.02), 0px 141px 40px 0px rgba(0, 0, 0, 0.00)',
         position: 'relative',
         '&:hover > a > div > img': {
-          transform: 'scale(1.1)',
+          transform: 'scale(1.02)',
         },
         '@sm': {
           '&:hover .token-button-container': {
@@ -148,7 +152,7 @@ export default ({
             x{formatNumber(token?.token?.supply, 0, true)}
           </Text>
         </Flex>
-      )}*/}
+      )}
       <Flex
         justify="center"
         align="center"
@@ -170,19 +174,29 @@ export default ({
         }}
       >
         <FontAwesomeIcon icon={faCheck} width={20} height={20} />
-      </Flex>
+      </Flex>*/}
       <Link
         passHref
         href={`https://www.galverse.art/gal/${token?.token?.tokenId}`}
       >
-        <Box css={{ position: 'relative', background: '$gray3', overflow: 'hidden', transition: 'all 0.9s ease-in-out' }}>
-    {/* Token Image */}
-    <TokenMedia
+        <Box 
+  css={{ 
+    position: 'relative', 
+    background: '$gray3', 
+    overflow: 'hidden', 
+    transition: 'all 0.9s ease-in-out',
+    '&:hover > div': { // Target all direct child `div` elements (overlays) when the Box is hovered
+      opacity: 1
+    }
+  }}
+>{/* Token Image */}
+  <TokenMedia
         token={token?.token}
         style={{
             width: '100%',
             maxHeight: 720,
             height: '100%',
+            transition: 'transform .3s ease-in-out',
             borderRadius: 0,
             aspectRatio: '1/1',
         }}
@@ -217,24 +231,23 @@ export default ({
         >
           <Flex align="center" justify="between">
             {/* Dark overlay for hover effect */}
-    <Box css={{
+            
+            <Box css={{
         position: 'absolute',
         top: 0,
         left: 0,
         width: '100%',
         height: '100%',
-        backgroundColor: 'rgba(0,0,0,0)',  // Transparent by default
-        transition: 'background-color 0.3s ease-in-out',
+        background: 'linear-gradient(180deg, rgba(36, 36, 36, 0) 0%, #212121 100%)',
+        opacity: 0,  // Fully transparent by default
+        transition: 'opacity 0.3s ease-in-out',
         '&:hover': {
-            backgroundColor: 'rgba(0,0,0,0.3)'  // Darken on hover
+          opacity: 1  // Reveal the gradient on hover
         }
     }}>
         {/* Overlay Text */}
         <Flex
             css={{
-                position: 'absolute',
-                top: '65%',
-                left: '50%',
                 flexDirection: 'column',
                 gap: '$1',
                 color: 'white',
@@ -243,53 +256,14 @@ export default ({
                 opacity: 0,  // Hidden by default
                 transition: 'opacity 0.3s ease-in-out',
                 '&:hover': {
-                    opacity: 1  // Show on hover
+                    opacity: 1,  // Show on hover
                 }
             }}
         >
-            <Text
-                style="h5"
-                as="p"
-                css={{
-                    fontFamily: "BureauGrotCondensedBook",
-                    fontWeight: 350,
-                    fontSize: '24px',
-                    maxWidth: '90%',
-                    whiteSpace: 'nowrap',
-                }}
-            >
-                {token?.token?.name}
-            </Text>
-            <Text
-                style="subtitle1"
-                as="p"
-                css={{
-                    fontFamily: "SourceSans3-Regular",
-                    fontWeight: 600,
-                    letterSpacing: '3%',
-                    fontSize: '14px',
-                    color: '$gray11',
-                    margin: 'auto',
-                    maxWidth: '90%',
-                    whiteSpace: 'nowrap',
-                }}
-            >
-                {'NO. ' + token?.token?.tokenId}
-            </Text>
+                
             {/* Button */}
-            
             <Box css={{marginTop: '$2', margin: 'auto'}}>
-            <Link
-        href={`https://www.galverse.art/gal/${token?.token?.tokenId}`}
-      >
-                      <Button
-                css={{ justifyContent: 'center', backgroundColor: '#000', width: 'auto', height: 'auto', fontSize: '14px' }}
-                type="button"
-                size="small"
-              >
-                VIEW PROFILE
-              </Button>
-              </Link>
+            
             </Box>
             
         {/*      {token?.token?.isFlagged && (
@@ -309,7 +283,79 @@ export default ({
                   </Text>
                 </Tooltip>
                 )}*/}
-            </Flex></Box>
+            </Flex>
+
+            <Text
+                  style="h5"
+                  as="p"
+                    css={{
+                      fontFamily: "BureauGrotCondensedBook",
+                      fontWeight: 350,
+                      fontSize: isDense ? '22px' : '16px',  // default for small screens
+                        '@md': {
+                        fontSize: isDense ? '36px' : '24px',  // adjusted for medium screens (>= 900px)
+                        },
+                        '@lg': {
+                        fontSize: isDense ? '42px' : '20px',  // adjusted for large screens (>= 1200px)
+                        },
+                        '@xl': {
+                        fontSize: isDense ? '38px' : '22px',  // adjusted for extra large screens (>= 1820px)
+                        },
+                        position: 'absolute',
+                      top: '72%',
+                      width: '100%',
+                      textAlign: 'center',
+                      whiteSpace: 'nowrap',
+                      margin: 'auto',
+                }}
+                >
+                {token?.token?.name}
+                </Text>
+                
+            <Text
+                style="subtitle1"
+                as="p"
+                css={{
+                    fontFamily: "SourceSans3-Regular",
+                    position: 'absolute',
+                    top: '82%',
+                    left: '5%',
+                    width: '100%',
+                    textAlign: 'center',
+                    fontWeight: 600,
+                    letterSpacing: '3%',
+                    fontSize: isDense ? '16px' : '10px',  // default for small screens
+                        '@md': {
+                        fontSize: isDense ? '28px' : '18px',  // adjusted for medium screens (>= 900px)
+                        },
+                        '@lg': {
+                        fontSize: isDense ? '32px' : '20px',  // adjusted for large screens (>= 1200px)
+                        },
+                        '@xl': {
+                        fontSize: isDense ? '28px' : '18px',  // adjusted for extra large screens (>= 1820px)
+                        },
+                    color: '$gray11',
+                    margin: 'auto',
+                    maxWidth: '90%',
+                    whiteSpace: 'nowrap',
+                }}
+            >
+                {'NO. ' + token?.token?.tokenId}
+            </Text>
+            
+            {showSource && token?.market?.floorAsk?.source?.name ? (
+                
+                <img
+                  style={{width:26, borderRadius:'20px', marginLeft:'10px', position:'absolute', top:'7%'}}
+                  onClick={(e) => {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    const url = `${proxyApi}/redirect/sources/${token?.market?.floorAsk?.source?.domain}/tokens/${token?.token?.contract}:${token?.token?.tokenId}/link/v2`;
+                    window.open(url, '_blank');
+                  }}
+                  src={getLogoURL(token?.market?.floorAsk?.source?.domain as string | undefined)}
+                />
+              ) : null}</Box>
             {/*{rarityEnabled && !is1155 && token?.token?.rarityRank && (
               <Box
                 css={{
@@ -377,29 +423,7 @@ export default ({
                     </Flex>*/}
                     
 
-              {showSource && token?.market?.floorAsk?.source?.name ? (
-                
-                <img
-                  style={{
-                    transform: 'translate(-50%, -50%)',
-                    width: 20,
-                    height: 20,
-                    position: 'absolute',
-                    top: '10%',
-                    left: '10%',
-                    flexDirection: 'column',
-                    gap: '$1',
-                    borderRadius: '50%',
-                  }}
-                  onClick={(e) => {
-                    e.preventDefault();
-                    e.stopPropagation();
-                    const url = `${proxyApi}/redirect/sources/${token?.market?.floorAsk?.source?.domain}/tokens/${token?.token?.contract}:${token?.token?.tokenId}/link/v2`;
-                    window.open(url, '_blank');
-                  }}
-                  src={getLogoURL(token?.market?.floorAsk?.source?.domain as string | undefined)}
-                />
-              ) : null}
+              
           {/*{token?.token?.lastSale?.price?.amount?.decimal ? (
             <Flex css={{ gap: '$2', marginTop: 'auto' }}>
               <Text css={{ color: '$gray11' }} style="subtitle3">

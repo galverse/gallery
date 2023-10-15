@@ -2,6 +2,7 @@ import { mainnet } from 'wagmi/chains'
 import useSWR from 'swr'
 import { useAccount } from 'wagmi'
 import { truncateAddress, truncateEns } from 'utils/truncate'
+import defaultAvatar from '/public/icons/ux/avatar-bg.png'
 
 export default (address?: string, chainId: number = 1) => {
   const { address: accountAddress } = useAccount()
@@ -27,6 +28,7 @@ export default (address?: string, chainId: number = 1) => {
 
   const shortAddress = address ? truncateAddress(address) : ''
   const shortName = response.data?.name ? truncateEns(response.data.name) : null
+
   let displayName = ''
 
   if (isAccountAddress) {
@@ -37,6 +39,9 @@ export default (address?: string, chainId: number = 1) => {
     displayName = shortAddress
   }
 
+  // Check if avatar is null or undefined, if yes then use the defaultAvatar
+  const avatar = response.data?.avatar || defaultAvatar;
+
   return {
     ...response,
     address,
@@ -44,6 +49,6 @@ export default (address?: string, chainId: number = 1) => {
     shortName,
     displayName,
     shortAddress,
-    avatar: response.data?.avatar,
+    avatar,  // Use the avatar variable here
   }
 }

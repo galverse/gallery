@@ -1,5 +1,7 @@
 import { styled } from 'stitches.config'
 import * as AvatarPrimitive from '@radix-ui/react-avatar'
+import Image from 'next/image'
+import defaultAvatar from '/public/icons/ux/avatar-bg.png'
 import {
   ComponentPropsWithoutRef,
   ComponentProps,
@@ -72,13 +74,33 @@ const AvatarFallback = styled(AvatarPrimitive.Fallback, {
 export const Avatar = forwardRef<
   ElementRef<typeof AvatarImage>,
   ComponentPropsWithoutRef<typeof AvatarImage> & {
-    fallback?: string
+    fallback?: string | JSX.Element
     size?: AvatarRootProps['size']
     corners?: AvatarRootProps['corners']
   }
->(({ size, corners, fallback, ...props }, forwardedRef) => (
-  <AvatarRoot size={size} corners={corners}>
-    <AvatarImage ref={forwardedRef} {...props} />
-    <AvatarFallback delayMs={600}>{fallback}</AvatarFallback>
-  </AvatarRoot>
-))
+>(({ size, corners, fallback, src, ...props }, forwardedRef) => {
+  // Check if src is an object and has a src property
+  const imageSrc = typeof src === 'object' && 'src' in src ? (src as any).src : src;
+  const isSrcAvailable = Boolean(imageSrc);
+
+  console.log('Avatar imageSrc:', imageSrc);
+  console.log('isSrcAvailable:', isSrcAvailable);
+
+  return (
+    <AvatarRoot size={size} corners={corners}>
+      {isSrcAvailable ? (
+        <AvatarImage ref={forwardedRef} src={imageSrc} {...props} />
+      ) : (
+        <AvatarFallback delayMs={0}>
+          {typeof fallback === "string" ? (
+            <Image src={defaultAvatar} alt="Default Avatar" width={100} height={100}  />
+          ) : (
+            fallback
+          )}
+        </AvatarFallback>
+      )}
+    </AvatarRoot>
+  )
+})
+
+

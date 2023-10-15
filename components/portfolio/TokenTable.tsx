@@ -27,6 +27,7 @@ import { List, AcceptBid } from 'components/buttons'
 import Image from 'next/image'
 import { useIntersectionObserver } from 'usehooks-ts'
 import LoadingSpinner from '../common/LoadingSpinner'
+import osLogo from 'public/home/logos/os-logo.png'
 import {
   EditListingModal,
   EditListingStep,
@@ -61,6 +62,7 @@ import { spin } from 'components/common/LoadingSpinner'
 import { formatDollar, formatNumber } from 'utils/numbers'
 import { OpenSeaVerified } from 'components/common/OpenSeaVerified'
 import { ItemView } from './ViewToggle'
+import EmptyStateGal from 'public/icons/ux/empty-state-chibi.png'
 import PortfolioTokenCard from './PortfolioTokenCard'
 import optimizeImage from 'utils/optimizeImage'
 
@@ -99,6 +101,7 @@ export const TokenTable = forwardRef<TokenTableRef, Props>(
     const loadMoreObserver = useIntersectionObserver(loadMoreRef, {})
     const client = useReservoirClient()
     const [acceptBidModalOpen, setAcceptBidModalOpen] = useState(false)
+    const isSmallDevice = useMediaQuery({ maxWidth: 900 })
 
     const [playingElement, setPlayingElement] = useState<
       HTMLAudioElement | HTMLVideoElement | null
@@ -178,19 +181,86 @@ export const TokenTable = forwardRef<TokenTableRef, Props>(
       mutate,
     }))
 
-    return (
+ 
+      return (
       <>
         {!isValidating && !isFetchingPage && tokens && tokens.length === 0 ? (
-          <Flex
+          <div style={{ background: '$gray3' }}>
+    <Flex
+        direction="column" // default to column for smaller screens
+        align="start"
+        css={{
+            py: '$6', 
+            px: '$5', 
+            gap: '$4', 
+            width: '100%', 
+            background: '$shadow', 
+            borderRadius: '24px',
+            '@md': { // breakpoint for medium screens (>= 900px)
+                flexDirection: 'row',
+            }
+        }}
+    >
+        <Flex
             direction="column"
-            align="center"
-            css={{ py: '$6', gap: '$4', width: '100%' }}
-          >
-            <Text css={{ color: '$gray11' }}>
-              <FontAwesomeIcon icon={faMagnifyingGlass} size="2xl" />
+            align="start"
+            css={{
+                py: '$6', 
+                px: '$5', 
+                gap: '$4', 
+                width: '100%', 
+                background: '$shadow', 
+                borderRadius: '24px'
+            }}
+        >
+            <Text 
+                as='h1' 
+                css={{
+                    textAlign: 'left', 
+                    color: '$white', 
+                    fontFamily: 'Bureau_Grot_Ultra_Black', 
+                    fontSize: '20px',  // default for smaller screens
+                    lineHeight: '29.6px',
+                    '@md': { // breakpoint for medium screens (>= 900px)
+                        fontSize: '31px', 
+                        lineHeight: '45.88px',
+                    }
+                }}
+            >
+                YOU DON'T HAVE ANY GALS
             </Text>
-            <Text css={{ color: '$gray11' }}>No items found</Text>
-          </Flex>
+            <Text 
+                css={{
+                    textAlign: 'left', 
+                    color: '$shadowText', 
+                    fontWeight: '400', 
+                    textTransform: 'none', 
+                    fontFamily: 'Space Mono',  
+                    fontSize: '14px', 
+                    lineHeight: '23.68px',
+                    '@md': { // breakpoint for medium screens (>= 900px)
+                        fontSize: '16px',
+                    }
+                }}
+            >
+                Head over to OpenSea to join the Galverse!
+            </Text>
+            <Link href="https://opensea.io/collection/galverse" rel="noreferrer" target="_blank">
+                <Button color="emptyPortfolio">
+                    OPENSEA 
+                    <Image src={osLogo} alt={"OpenSea Badge"} width={20}></Image>
+                </Button>
+            </Link>
+        </Flex>
+        
+        <Image 
+            src={EmptyStateGal} 
+            alt="Galverse Gal" 
+            width={355} 
+            height={346}
+        />
+    </Flex>
+</div>
         ) : (
           <Flex direction="column" css={{ width: '100%' }}>
             {isLoading ? null : itemView === 'grid' ? (

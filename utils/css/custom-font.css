@@ -1,4 +1,6 @@
 /* /src/custom-font.css */
+@import url('https://fonts.googleapis.com/css2?family=Space+Mono&display=swap');
+
 @font-face {
     font-family: 'BureauGrot';
     src: url('/fonts/BureauGrot.otf') format('opentype');
@@ -12,12 +14,16 @@
     src: url('/fonts/sf-compact-thin.otf') format('opentype');
   }
   @font-face {
+    font-family: 'SF Pro Display';
+    src: url('/fonts/SF-Pro-Display.otf') format('opentype');
+  }
+  @font-face {
     font-family: 'Bureau_Grot_Extra_Compressed_Light';
     src: url('/fonts/Bureau_Grot_Extra_Compressed_Light.otf') format('opentype');
   }
   @font-face {
     font-family: 'Bureau_Grot_Ultra_Black';
-    src: url('/fonts/Bureau_Grot_Ultra_Black') format('opentype');
+    src: url('/fonts/Bureau_Grot_Ultra_Black.otf') format('opentype');
   }
   @font-face {
     font-family: 'Bureau_Grot_Wide_Ultra_Black';
@@ -51,7 +57,11 @@
     font-family: 'HiraKakuStd-W8';
     src: url('/fonts/HiraKakuStd-W8.woff') format('woff');
   }
-  
+  @font-face {
+    font-family: 'Space Mono';
+    src: url('https://fonts.googleapis.com/css2?family=Space+Mono&display=swap');
+  }
+
   body {
     font-family: 'BureauGrot', sans-serif;
   }

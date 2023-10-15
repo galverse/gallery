@@ -535,7 +535,7 @@ const CollectionPage: NextPage<Props> = ({ id, ssr }) => {
                       mutate={mutate}
                     />
                     ) : null} */}
-                  {/* Collection Mint */}
+                  {/* Collection Mint 
                   {mintData ? (
                     <Mint
                       collectionId={collection.id}
@@ -562,7 +562,7 @@ const CollectionPage: NextPage<Props> = ({ id, ssr }) => {
                               {`${mintPrice}`}
                             </Text>
                           )}
-                        </Flex>
+                        </Flex>*
                       }
                       buttonCss={{
                         minWidth: 'max-content',
@@ -580,7 +580,7 @@ const CollectionPage: NextPage<Props> = ({ id, ssr }) => {
                       mutate={mutate}
                     />
                   ) : null}
-                  {/*
+                  
                   <CollectionOffer
                     collection={collection}
                     buttonChildren={<FontAwesomeIcon icon={faHand} />}
@@ -719,15 +719,16 @@ const CollectionPage: NextPage<Props> = ({ id, ssr }) => {
                       </Text>*/}
                     </Flex>
                   </Flex>
+                  
                   <Grid
-                    css={{
-                      gap: '$4',
-                      pb: '$6',
-                      gridTemplateColumns: isDense
-                        ? 'repeat(auto-fill, minmax(250px, 1fr))'
-                        : 'repeat(auto-fill, minmax(180px, 1fr))',
-                    }}
-                  >
+                      css={{
+                        gap: '$4',
+                        pb: '$6',
+                        gridTemplateColumns: isSmallDevice 
+                          ? (isDense ? 'repeat(auto-fill, minmax(170px, 1fr))' : 'repeat(auto-fill, minmax(120px, 1fr))')
+                          : (isDense ? 'repeat(auto-fill, minmax(320px, 1fr))' : 'repeat(auto-fill, minmax(180px, 1fr))'),
+                      }}
+                    >
                     {isFetchingInitialData
                       ? Array(10)
                           .fill(null)

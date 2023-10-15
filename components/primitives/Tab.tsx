@@ -9,11 +9,14 @@ const TabsList = styled(TabsPrimitive.List, {
   mb: '$4',
 })
 
+
 const TabsTrigger = styled(TabsPrimitive.Trigger, {
-  fontWeight: '100',
+  fontWeight: '700',
   textTransform: 'uppercase',
-  fontFamily: 'bureauGrotMedium',
-  letterSpacing: '1.2px',
+  fontFamily: 'SF Pro Display',
+  lineHeight: '26.64px',
+  color: '#FAFAFA',
+  fontSize: '18px',
   pb: '$3',
   '&[data-state="active"]': {
     boxShadow:

@@ -3,6 +3,7 @@
 // import CartButton from './CartButton'
 import { useRef } from 'react'
 import { Box, Flex, Card } from '../primitives'
+import backNav from 'public/icons/ux/back-nav.svg'
 import { useRouter } from 'next/router'
 import { useHotkeys } from 'react-hotkeys-hook'
 import GalverseLogo from 'public/home/logos/brand-logo.svg'
@@ -65,12 +66,21 @@ const Navbar = () => {
     >
       <Box css={{ flex: 1 }}>
         <Flex align="center">
+        <Link href={"https://www.galverse.art/"}>
+              <Image
+                src={backNav}
+                width={30}
+                height={42}
+                alt="Back Navigation"
+                style={{ marginRight: '30px' }}
+              />
+          </Link>
           <Link href={`/${routePrefix}`}>
             <Box css={{ width: 200, cursor: 'pointer' }}>
               <Image
                 src={GalverseLogo}
-                width={200}
-                height={200}
+                width={150}
+                height={150}
                 alt="Galverse"
               />
             </Box>
@@ -115,6 +125,15 @@ const Navbar = () => {
         }}
       >
         <Flex align="center">
+        <Link href={"https://www.galverse.art/"}>
+              <Image
+                src={backNav}
+                width={35}
+                height={35}
+                alt="Back Navigation"
+                style={{ marginRight: '10px', position: 'relative', right: '20px' }}
+              />
+          </Link>
           <Link href={`/${routePrefix}`}>
             <Box css={{ cursor: 'pointer', alignItems: 'flex-start' }}>
               <Image
