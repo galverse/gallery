@@ -105,7 +105,7 @@ if (router.pathname.startsWith("/portfolio")) {
         </HoverableImageWrapper>
       </a>
     </Link>
-          <Link href={`/${routePrefix}`}>
+          <Link href="/">
             <Box css={{ width: 200, cursor: 'pointer',
             transition: 'transform .3s ease-in-out',
             '&:hover': {
@@ -171,7 +171,7 @@ if (router.pathname.startsWith("/portfolio")) {
         </HoverableImageWrapper>
       </a>
     </Link>
-          <Link href={`/${routePrefix}`}>
+          <Link href="/">
             <Box css={{ cursor: 'pointer', alignItems: 'flex-start',transition: 'transform .3s ease-in-out',
             '&:hover': {
           transform: 'scale(1.1)'}}}>
