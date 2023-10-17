@@ -196,14 +196,14 @@ export const TokenTable = forwardRef<TokenTableRef, Props>(
                 py: '$2',
                 px: '$5',
                 gap: '$4',
-                marginTop: '-50px',
+                marginTop: '0px',
                 width: '100%',
                 background: '$shadow',
                 borderRadius: '24px',
                 position: 'relative',  // Added this line
                 '@bp1000': {
                   flexDirection: 'row',
-                  marginTop: '60px',
+                  marginTop: '90px',
                 }
               }}
             >
