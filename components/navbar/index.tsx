@@ -158,8 +158,8 @@ if (router.pathname.startsWith("/portfolio")) {
             <Box css={{ cursor: 'pointer', alignItems: 'flex-start' }}>
               <Image
                 src={GalverseLogo}
-                width={200}
-                height={200}
+                width={130}
+                height={130}
                 alt="Galverse"
               />
             </Box>

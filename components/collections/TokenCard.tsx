@@ -354,7 +354,15 @@ export default ({
             {showSource && token?.market?.floorAsk?.source?.name ? (
                 
                 <img
-                  style={{width:26, borderRadius:'20px', marginLeft:'10px', position:'absolute', top:'7%', border:'2px solid white'}}
+                  style={{
+                    width: 26,
+                    borderRadius: '20px',
+                    marginLeft: '10px',
+                    position: 'absolute',
+                    top: '7%',
+                    border: '2px solid transparent', // Start with a transparent border
+                    transition: 'border-color 0.2s ease', // Add a transition for smooth hover effect
+                  }}
                   onClick={(e) => {
                     e.preventDefault();
                     e.stopPropagation();
@@ -362,6 +370,12 @@ export default ({
                     window.open(url, '_blank');
                   }}
                   src={getLogoURL(token?.market?.floorAsk?.source?.domain as string | undefined)}
+                  onMouseOver={(e) => {
+                    e.currentTarget.style.borderColor = 'white'; // Change border color to white on hover
+                  }}
+                  onMouseOut={(e) => {
+                    e.currentTarget.style.borderColor = 'transparent'; // Reset border color on mouse out
+                  }}
                 />
               ) : null}</Box>
             {/*{rarityEnabled && !is1155 && token?.token?.rarityRank && (

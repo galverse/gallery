@@ -9,6 +9,7 @@ import { useRouter } from 'next/router'
 import { CSSProperties, FC, useMemo, useState } from 'react'
 import { addParam, hasParam, removeParam } from 'utils/router'
 import { FixedSizeList as List } from 'react-window'
+import ScrollableArea from 'components/common/ScrollStyle';
 import { useDebounce } from 'usehooks-ts'
 
 type Props = {
@@ -144,6 +145,7 @@ const transformedKey = attributeNameToFilename(attribute.key);
           css={{
             flex: 1,
             textTransform: 'uppercase',
+            fontWeight: '600',
             whiteSpace: 'pre',
             textOverflow: 'ellipsis',
             overflow: 'hidden',
@@ -200,6 +202,7 @@ const transformedKey = attributeNameToFilename(attribute.key);
 
       {/* Attributes List */}
       <Flex css={{ paddingBottom: open ? 8 : 0 }}>
+      
         <List
           height={
             open

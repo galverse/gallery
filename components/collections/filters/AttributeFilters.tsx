@@ -13,6 +13,7 @@ import { CollapsibleContent } from 'components/primitives/Collapsible'
 import { NAVBAR_HEIGHT } from 'components/navbar'
 import LoadingSpinner from 'components/common/LoadingSpinner'
 import { useDebounce } from 'usehooks-ts'
+import ScrollableArea from 'components/common/ScrollStyle';
 import { GetServerSideProps, InferGetServerSidePropsType, NextPage } from 'next'
 import { paths } from '@reservoir0x/reservoir-sdk'
 import { truncateAddress } from 'utils/truncate'
@@ -130,42 +131,43 @@ const debouncedSearch = useDebounce(tokenSearchQuery, 500)
     value={tokenSearchQuery}
   />
 </Box>
-      <CollapsibleContent
-        css={{
-          position: 'sticky',
-          top: 16 + 80,
-          height: `calc(100vh - ${NAVBAR_HEIGHT}px - 32px)`,
-          overflow: 'auto',
-          marginBottom: 16,
-          background: 'transparent',
-          border: 'none',
-          borderRadius: 0,
-        }}
-      >
+<CollapsibleContent
+    css={{
+        position: 'sticky',
+        top: 16 + 80,
+        height: `calc(100vh - ${NAVBAR_HEIGHT}px - 32px)`,
+        overflow: 'auto',
+        marginBottom: 16,
+        background: 'transparent',
+        border: 'none',
+        borderRadius: 0,
+    }}
+>
+    
         <Box
-          css={{
-            '& > div:first-of-type': {
-              pt: 0,
-            },
-          }}
+            css={{
+                '& > div:first-of-type': {
+                    pt: 0,
+                },
+            }}
         >
-          {attributes &&
-            attributes
-              .filter((attribute) => attribute.kind != 'number')
-              .map((attribute) => (
-                <AttributeSelector
-                  key={attribute.key}
-                  attribute={attribute}
-                  scrollToTop={scrollToTop}
-                />
-              ))}
-          {(!attributes || !attributes.length) && (
-            <Flex justify="center" align="center" css={{ height: 150 }}>
-              <LoadingSpinner css={{ justifySelf: 'center' }} />
-            </Flex>
-          )}
+            {attributes &&
+                attributes
+                    .filter((attribute) => attribute.kind != 'number')
+                    .map((attribute) => (
+                        <AttributeSelector
+                            key={attribute.key}
+                            attribute={attribute}
+                            scrollToTop={scrollToTop}
+                        />
+                    ))}
+            {(!attributes || !attributes.length) && (
+                <Flex justify="center" align="center" css={{ height: 150 }}>
+                    <LoadingSpinner css={{ justifySelf: 'center' }} />
+                </Flex>
+            )}
         </Box>
-      </CollapsibleContent>
+</CollapsibleContent>
     </Collapsible.Root>
   )
 }

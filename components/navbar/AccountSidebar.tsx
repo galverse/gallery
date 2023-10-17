@@ -68,7 +68,7 @@ export const AccountSidebar: FC = () => {
       {/* Trigger */}
       <DropdownMenuTrigger asChild>
         {ensAvatar ? (
-          <Avatar size="large" src={ensAvatar} />
+          <Avatar size="large" style={{width:38,height:38}} src={ensAvatar} />
         ) : (
           <Jazzicon
             diameter={52}
@@ -78,7 +78,7 @@ export const AccountSidebar: FC = () => {
       </DropdownMenuTrigger>
   
       {/* Content */}
-      <DropdownMenuContent style={{fontFamily: 'SF Pro Display', padding: '20px 20px 4px 20px', textTransform: 'uppercase', textAlign: 'left'}}>
+      <DropdownMenuContent style={{fontFamily: 'SF Pro Display', padding: '20px 20px 4px 20px', textTransform: 'uppercase', textAlign: 'left', fontWeight: '600'}}>
         <DropdownMenuItem style={{marginTop: '16px'}} asChild>
           <Link href={`/portfolio/${address}`} legacyBehavior>
             <a>My Collection</a>

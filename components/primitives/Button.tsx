@@ -64,6 +64,8 @@ const Button = styled('button', {
       },
       avatarCircle: {
         backgroundColor: '$neutralBG',
+        width: '38px',
+        height: '38px',
         color: '$gray12',
         margin: '2px 2px 2px 2px',
         padding: '4px 20px 4px 20px',

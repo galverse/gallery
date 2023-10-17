@@ -3,11 +3,9 @@ import AnalyticsProvider, {
 } from 'components/AnalyticsProvider'
 initializeAnalytics()
 import ErrorTrackingProvider from 'components/ErrorTrackingProvider'
+import ScrollableArea from 'components/common/ScrollStyle'
 import { globalCss } from 'stitches.config'
 import { globalStyles } from '../utils/css/globalStyles'
-
-
-
 import { Inter } from '@next/font/google'
 import { Luckiest_Guy } from '@next/font/google'
 import { Roboto } from '@next/font/google'
@@ -87,7 +85,10 @@ const reservoirKitThemeOverrides = {
 }
 
 function AppWrapper(props: AppProps & { baseUrl: string }) {
+  globalStyles()
   return (
+    
+    
     <ThemeProvider
       attribute="class"
       defaultTheme="dark"
@@ -95,7 +96,7 @@ function AppWrapper(props: AppProps & { baseUrl: string }) {
         dark: darkTheme.className,
         light: 'dark',
       }}
-    >
+    ><ScrollableArea>
       <WagmiConfig config={wagmiClient}>
         <ChainContextProvider>
         <SearchProvider>
@@ -103,6 +104,7 @@ function AppWrapper(props: AppProps & { baseUrl: string }) {
           <AnalyticsProvider>
             <ErrorTrackingProvider>
               <ReferralContextProvider>
+              
                 <MyApp {...props} />
               </ReferralContextProvider>
             </ErrorTrackingProvider>
@@ -110,8 +112,10 @@ function AppWrapper(props: AppProps & { baseUrl: string }) {
           </GridProvider>
           </SearchProvider>
         </ChainContextProvider>
-      </WagmiConfig>
+      </WagmiConfig></ScrollableArea>
     </ThemeProvider>
+    
+    
   )
 }
 
@@ -205,17 +209,21 @@ function MyApp({
         >
           <CartProvider feesOnTopUsd={feesOnTop}>
             <WebsocketContextProvider>
+            
               <Tooltip.Provider>
                 <RainbowKitProvider
                   chains={chains}
                   theme={rainbowKitTheme}
                   modalSize="compact"
                 >
+                  
                   <ToastContextProvider>
                     <FunctionalComponent {...pageProps} />
                   </ToastContextProvider>
+                  
                 </RainbowKitProvider>
               </Tooltip.Provider>
+              
             </WebsocketContextProvider>
           </CartProvider>
         </ReservoirKitProvider>

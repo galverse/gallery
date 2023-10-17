@@ -144,7 +144,7 @@ const CollectionPage: NextPage<Props> = ({ id, ssr }) => {
         } ${mintData?.price?.currency?.symbol?.toUpperCase()}`
 
         let tokenQuery: Parameters<typeof useDynamicTokens>['0'] = {
-          limit: 20,
+          limit: 80,
           sortDirection: 'asc'
       };
       
@@ -886,7 +886,7 @@ export const getServerSideProps: GetServerSideProps<{
 
   let tokensQuery: paths['/tokens/v6']['get']['parameters']['query'] = {
     sortDirection: 'asc',
-    limit: 20,
+    limit: 80,
   }
   
 

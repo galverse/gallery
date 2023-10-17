@@ -139,7 +139,7 @@ export default ({
         },
         '@sm': {
           '&:hover .token-button-container': {
-            
+            display:'none',
           },
         },
       }}
@@ -171,42 +171,7 @@ export default ({
           </Text>
         </Flex>
       )}
-      {isOwner && !isSmallDevice ? (
-        <Button
-          css={{
-            borderRadius: '99999px',
-            width: 48,
-            height: 48,
-            backgroundColor: isSelectedItem ? '$primary9' : '#15171833',
-            '&:hover': {
-              backgroundColor: isSelectedItem ? '$primary9' : '#15171859',
-            },
-            opacity: isSelectedItem ? 1 : 1,
-            position: 'absolute',
-            right: '$2',
-            zIndex: 1,
-            top: '$2',
-            color: 'white',
-            p: 0,
-            justifyContent: 'center',
-          }}
-          onClick={(e) => {
-            e.preventDefault()
-
-            if (!isSelectedItem) {
-              addSelectedItem(token)
-            } else {
-              removeSelectedItem(token)
-            }
-          }}
-        >
-          <FontAwesomeIcon
-            icon={isSelectedItem ? faCheck : faPlus}
-            width={20}
-            height={20}
-          />
-        </Button>
-      ) : null}
+      
       <Link
         passHref
         href={`https://www.galverse.art/gal/${token?.token?.tokenId}`}
@@ -455,38 +420,12 @@ export default ({
           ) : null}
         </Flex>
       </Link>
-      {!isOwner && token?.ownership?.floorAsk?.price?.amount ? (
-        <Flex
-          className="token-button-container"
-          css={{
-            width: '100%',
-            transition: 'bottom 0.25s ease-in-out',
-            position: 'absolute',
-            bottom: -44,
-            left: 0,
-            right: 0,
-            gap: 1,
-          }}
-        >
-          <BuyNow
-            tokenId={token.token?.tokenId}
-            collectionId={token.token?.collection?.id}
-            mutate={mutate}
-            buttonCss={{
-              justifyContent: 'center',
-              flex: 1,
-            }}
-            buttonProps={{
-              corners: 'square',
-            }}
-            buttonChildren="Buy Now"
-          />
-        </Flex>
-      ) : null}
+      
       {isOwner ? (
         <Flex
           className="token-button-container"
           css={{
+            display:'none',
             width: '100%',
             transition: 'bottom 0.25s ease-in-out',
             position: 'absolute',
