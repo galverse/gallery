@@ -60,6 +60,7 @@ const AvatarImage = styled(AvatarPrimitive.Image, {
   height: '100%',
   objectFit: 'cover',
   borderRadius: 'inherit',
+  cursor: 'pointer'
 })
 
 const AvatarFallback = styled(AvatarPrimitive.Fallback, {
