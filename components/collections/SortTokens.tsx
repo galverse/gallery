@@ -18,14 +18,14 @@ import { useMediaQuery } from 'react-responsive'
 import { CSS } from '@stitches/react'
 
 type Options =
-  | 'Newest to Oldest'
   | 'Oldest to Newest'
+  | 'Newest to Oldest'
   | 'Price low to high'
   | 'Price high to low'
 
 const options: { [x: string]: { sortBy: string; sortDirection: string } } = {
-  'Newest to Oldest': { sortBy: 'tokenId', sortDirection: 'desc' },
   'Oldest to Newest': { sortBy: 'tokenId', sortDirection: 'asc' },
+  'Newest to Oldest': { sortBy: 'tokenId', sortDirection: 'desc' },
   'Price low to high': { sortBy: 'floorAskPrice', sortDirection: 'asc' },
   'Price high to low': { sortBy: 'floorAskPrice', sortDirection: 'desc' },
 }
@@ -37,9 +37,10 @@ type Props = {
 export const SortTokens: FC<Props> = ({ css }) => {
   const router = useRouter()
   const [sortSelection, setSortSelection] =
-    useState<Options>('Newest to Oldest')
+    useState<Options>('Oldest to Newest')
 
   const isMounted = useMounted()
+  const isMedDevice = useMediaQuery({ maxWidth: 970 })
   const isSmallDevice = useMediaQuery({ maxWidth: 600 })
 
   const { isDense, toggleDense } = useGrid();
@@ -54,15 +55,15 @@ export const SortTokens: FC<Props> = ({ css }) => {
       router.push({
         query: {
           ...router.query,
-          sortBy: options['Newest to Oldest'].sortBy,
-          sortDirection: options['Newest to Oldest'].sortDirection,
+          sortBy: options['Oldest to Newest'].sortBy,
+          sortDirection: options['Oldest to Newest'].sortDirection,
         },
       });
       return;
     }
 
-    if (sortBy === 'tokenId' && sortDirection === 'asc') {
-      setSortSelection('Oldest to Newest');
+    if (sortBy === 'tokenId' && sortDirection === 'desc') {
+      setSortSelection('Newest to Oldest');
       return;
     }
     if (sortBy === 'floorAskPrice' && sortDirection === 'asc') {
@@ -73,7 +74,7 @@ export const SortTokens: FC<Props> = ({ css }) => {
       setSortSelection('Price high to low');
       return;
     }
-    setSortSelection('Newest to Oldest');
+    setSortSelection('Oldest to Newest');
   }, [router.query]);
 
   return (

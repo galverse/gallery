@@ -94,7 +94,7 @@ const CollectionPage: NextPage<Props> = ({ id, ssr }) => {
   ])
   const [initialTokenFallbackData, setInitialTokenFallbackData] = useState(true)
   const isMounted = useMounted()
-  const isSmallDevice = useMediaQuery({ maxWidth: 905 }) && isMounted
+  const isSmallDevice = useMediaQuery({ maxWidth: 960 }) && isMounted
   const [playingElement, setPlayingElement] = useState<
     HTMLAudioElement | HTMLVideoElement | null
   >()
@@ -374,12 +374,15 @@ const CollectionPage: NextPage<Props> = ({ id, ssr }) => {
               px: '$4',
               pt: '$4',
               pb: 0,
+              '@sm': {
+                px: '$5',
+              },
               '@md': {
                 px: '$5',
               },
 
               '@xl': {
-                px: '$6',
+                px: '$5',
               },
             }}
           >
@@ -624,7 +627,6 @@ const CollectionPage: NextPage<Props> = ({ id, ssr }) => {
                 )}
                 <Box
                   css={{
-                    flex: 1,
                     width: '100%',
                   }}
                 >
@@ -639,7 +641,7 @@ const CollectionPage: NextPage<Props> = ({ id, ssr }) => {
                           /> 
                         )}
                       <Text style='h5' as='h5' css={{
-                        ml: '10px',}}>8,888 Gals</Text>
+                        pt: '5px', zIndex:'2', flex:'none'}}>8,888 Gals</Text>
                     </Flex>
                     {socketState !== null && <LiveState />}
                     <Flex

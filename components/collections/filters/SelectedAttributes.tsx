@@ -66,10 +66,10 @@ const SelectedAttributes: FC<Props> = ({ collection, mutate }) => {
           css={{ mr: '$3' }}
           size="small"
         >
-          <Text style="body1" css={{ color: '$gray11' }}>
+          <Text css={{ color: '$gray11', fontFamily: 'SF Pro Display Bold', fontWeight:'600' }}>
             {key}:
           </Text>
-          <Text style="subtitle1">{value}</Text>
+          <Text css={{fontFamily: 'SF Pro Display Bold', fontWeight:'600'}}>{value}</Text>
           <Text css={{ color: '$gray9' }}>
           <Image src={smallClose} alt="Close Button" />
           </Text>

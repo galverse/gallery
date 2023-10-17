@@ -4,6 +4,7 @@ import AnalyticsProvider, {
 initializeAnalytics()
 import ErrorTrackingProvider from 'components/ErrorTrackingProvider'
 import { globalCss } from 'stitches.config'
+import { globalStyles } from '../utils/css/globalStyles'
 
 
 
@@ -121,6 +122,7 @@ function MyApp({
 }: AppProps & { baseUrl: string }) {
   globalReset()
   globalCss()
+  globalStyles()
   
 
   const globalStylesInstance = globalCss()

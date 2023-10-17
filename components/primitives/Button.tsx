@@ -26,7 +26,7 @@ const Button = styled('button', {
     color: {
       primary: {
         backgroundColor: '$neutralBG',
-        fontFamily: 'SFCompactThin',
+        fontFamily: 'SFCompactMedium',
         textTransform: 'uppercase',
         boxShadow: '0 0 0 2px #A9A7B1',
         color: 'white',
@@ -62,6 +62,16 @@ const Button = styled('button', {
           backgroundColor: '$gray4',
         },        
       },
+      avatarCircle: {
+        backgroundColor: '$neutralBG',
+        color: '$gray12',
+        margin: '2px 2px 2px 2px',
+        padding: '4px 20px 4px 20px',
+        '&:hover': {
+          backgroundColor: '$gray4',
+        },
+        
+      },
       emptyPortfolio: {
         backgroundColor: '#343333',
         border: '1px solid #484747',
@@ -87,6 +97,7 @@ const Button = styled('button', {
       },
       circle: {
         borderRadius: '99999px',
+        border:'none',
         alignItems: 'center',
         justifyContent: 'center',
       },

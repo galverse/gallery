@@ -29,12 +29,28 @@ const Navbar = () => {
   const { theme } = useTheme()
   const { isConnected } = useAccount()
   const isMobile = useMediaQuery({ query: '(max-width: 960px' })
+  const isSmallDevice = useMediaQuery({ query: '(max-width: 600px' })
   const isMounted = useMounted()
   const { routePrefix } = useMarketplaceChain()
+
+  type BackButtonProps = {
+    href: string;
+    target: "_blank" | "_self";
+};
+
 
 //  let searchRef = useRef<HTMLInputElement>(null)
 
   const router = useRouter()
+  const backButtonProps: BackButtonProps = {
+    href: "https://galverse.art", // default value
+    target: "_blank" // default value
+};
+
+if (router.pathname.startsWith("/portfolio")) {
+  backButtonProps.href = "/";
+  backButtonProps.target = "_self";
+}
   useHotkeys('meta+k', (e) => {
     e.preventDefault()
  {/*   if (searchRef?.current) {
@@ -51,7 +67,7 @@ const Navbar = () => {
     <Flex
       css={{
         height: NAVBAR_HEIGHT_MOBILE,
-        px: '$4',
+        px: isSmallDevice ? '$4' : '$5',
         width: '100%',
         borderBottom: '1px solid $gray4',
         zIndex: 999,
@@ -66,21 +82,23 @@ const Navbar = () => {
     >
       <Box css={{ flex: 1 }}>
         <Flex align="center">
-        <Link href={"https://www.galverse.art/"}>
-              <Image
-                src={backNav}
-                width={30}
-                height={42}
-                alt="Back Navigation"
-                style={{ marginRight: '30px' }}
-              />
-          </Link>
+        <Link legacyBehavior href={backButtonProps.href} passHref>
+        <a target={backButtonProps.target}>
+          <Image
+            src={backNav}
+            width={13}
+            height={30}
+            alt="Back Navigation"
+            style={{ marginRight: '10px', marginTop: '10px' }}
+          />
+        </a>
+      </Link>
           <Link href={`/${routePrefix}`}>
             <Box css={{ width: 200, cursor: 'pointer' }}>
               <Image
                 src={GalverseLogo}
-                width={150}
-                height={150}
+                width={128}
+                height={40}
                 alt="Galverse"
               />
             </Box>
@@ -97,10 +115,10 @@ const Navbar = () => {
     <Flex
       css={{
         height: NAVBAR_HEIGHT,
-        px: '$6',
+        px: '$5',
         
         '@xl': {
-          px: '$6',
+          px: '$5',
         },
         width: '100%',
         // maxWidth: 1920,
@@ -125,15 +143,17 @@ const Navbar = () => {
         }}
       >
         <Flex align="center">
-        <Link href={"https://www.galverse.art/"}>
-              <Image
-                src={backNav}
-                width={35}
-                height={35}
-                alt="Back Navigation"
-                style={{ marginRight: '10px', position: 'relative', right: '20px' }}
-              />
-          </Link>
+              <Link legacyBehavior href={backButtonProps.href} passHref>
+        <a target={backButtonProps.target}>
+          <Image
+            src={backNav}
+            width={17.25}
+            height={40}
+            alt="Back Navigation"
+            style={{ marginRight: '10px', marginTop: '10px' }}
+          />
+        </a>
+      </Link>
           <Link href={`/${routePrefix}`}>
             <Box css={{ cursor: 'pointer', alignItems: 'flex-start' }}>
               <Image
@@ -275,7 +295,7 @@ const Navbar = () => {
         {isConnected ? (
           <AccountSidebar />
         ) : (
-          <Box css={{ maxWidth: '285px' }}>
+          <Box css={{ maxWidth: '285px', fontFamily: 'SFCompactMedium' }}>
             <ConnectWalletButton />
           </Box>
         )}

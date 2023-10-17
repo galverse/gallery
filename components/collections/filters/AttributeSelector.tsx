@@ -71,15 +71,8 @@ const transformedKey = attributeNameToFilename(attribute.key);
     })
   }, [attribute])
 
-  const AttributeRow: FC<{ index: number; style: CSSProperties }> = ({
-    index,
-    style,
-  }) => {
+  const AttributeRow: FC<{ index: number; style: CSSProperties }> = ({ index, style }) => {
     console.log("Rendering AttributeRow");
-    
-
-      
-
     
     const currentAttribute = attribute?.values?.[index];
     if (!attribute || !attribute.values) {
@@ -90,6 +83,9 @@ const transformedKey = attributeNameToFilename(attribute.key);
     const iconFilename = attributeNameToFilename(attribute.key);
     const iconSrc = attributeIcons[iconFilename];
     console.log(iconSrc);
+    if (iconFilename === 'trait_6551_Upgrade') {
+      return null;  // Return null if it's 'trait_6551_Upgrade'
+    }
 
     return (
       <Flex
@@ -145,13 +141,13 @@ const transformedKey = attributeNameToFilename(attribute.key);
             }}
           />
         <Text
-          style="body1"
           css={{
             flex: 1,
             textTransform: 'uppercase',
             whiteSpace: 'pre',
             textOverflow: 'ellipsis',
             overflow: 'hidden',
+            fontFamily: 'SF Pro Display'
           }}
         >
           {currentAttribute?.value}
@@ -168,7 +164,7 @@ const transformedKey = attributeNameToFilename(attribute.key);
   }
   console.log("Rendering icon with path:", attributeIcons[attribute.key]);
   console.log("Raw attribute key:", attribute.key);
-
+  if (transformedKey !== 'trait_6551_Upgrade') {
   return (
     <Box
       css={{
@@ -190,10 +186,10 @@ const transformedKey = attributeNameToFilename(attribute.key);
         
         <Flex align="center" css={{ gap: '$3' }}>
         
-<Image src={attributeIcons[transformedKey]} alt={`${attribute.key} icon`} width={32} height={32} />
-  <Text style="attributes" ellipsify>
-    {attribute.key}
-  </Text>
+        <Image src={attributeIcons[transformedKey]} alt={`${attribute.key} icon`} width={32} height={32} />
+          <Text style="attributes" ellipsify>
+            {attribute.key}
+          </Text>
 </Flex>
         <FontAwesomeIcon
             icon={open ? faMinus : faPlus}
@@ -225,4 +221,6 @@ const transformedKey = attributeNameToFilename(attribute.key);
       </Flex>
     </Box>
   );
+}
+return null;  // Return null if it's 'trait_6551_Upgrade'
 }

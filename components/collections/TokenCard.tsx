@@ -85,14 +85,15 @@ export default ({
         overflow: 'hidden',
         background: '$neutralBgSubtle',
         $$shadowColor: '$colors$panelShadow',
-        boxShadow: '0px 6px 12px 0px rgba(0, 0, 0, 0.11), 0px 23px 23px 0px rgba(0, 0, 0, 0.09), 0px 51px 31px 0px rgba(0, 0, 0, 0.05), 0px 90px 36px 0px rgba(0, 0, 0, 0.02), 0px 141px 40px 0px rgba(0, 0, 0, 0.00)',
         position: 'relative',
-        '&:hover > a > div > img': {
-          transform: 'scale(1.02)',
+        transition: 'transform .3s ease-in-out',  // Transition for the scaling effect
+        '&:hover': {
+          transform: 'scale(1.02)',  // Scale the entire box on hover
+          boxShadow: '0px 6px 12px 0px rgba(0, 0, 0, 0.11), 0px 23px 23px 0px rgba(0, 0, 0, 0.09), 0px 51px 31px 0px rgba(0, 0, 0, 0.05), 0px 90px 36px 0px rgba(0, 0, 0, 0.02), 0px 141px 40px 0px rgba(0, 0, 0, 0.00)'
         },
         '@sm': {
           '&:hover .token-button-container': {
-            bottom: 0,
+            
           },
         },
       }}
@@ -186,7 +187,9 @@ export default ({
     overflow: 'hidden', 
     transition: 'all 0.9s ease-in-out',
     '&:hover > div': { // Target all direct child `div` elements (overlays) when the Box is hovered
-      opacity: 1
+      opacity: 1,
+      scale: '1.02',
+      
     }
   }}
 >{/* Token Image */}
@@ -198,7 +201,8 @@ export default ({
             height: '100%',
             transition: 'transform .3s ease-in-out',
             borderRadius: 0,
-            aspectRatio: '1/1',
+            aspectRatio: '1/1'
+            
         }}
             staticOnly={!showMedia}
             imageResolution={'medium'}
@@ -242,7 +246,10 @@ export default ({
         opacity: 0,  // Fully transparent by default
         transition: 'opacity 0.3s ease-in-out',
         '&:hover': {
-          opacity: 1  // Reveal the gradient on hover
+          opacity: 1,  // Reveal the gradient on hover
+          
+          boxShadow: '0px 6px 12px 0px rgba(0, 0, 0, 0.11), 0px 23px 23px 0px rgba(0, 0, 0, 0.09), 0px 51px 31px 0px rgba(0, 0, 0, 0.05), 0px 90px 36px 0px rgba(0, 0, 0, 0.02), 0px 141px 40px 0px rgba(0, 0, 0, 0.00)',
+          
         }
     }}>
         {/* Overlay Text */}
@@ -255,6 +262,7 @@ export default ({
                 transform: 'translate(-50%, -50%)',
                 opacity: 0,  // Hidden by default
                 transition: 'opacity 0.3s ease-in-out',
+                scale: '1.02',
                 '&:hover': {
                     opacity: 1,  // Show on hover
                 }
@@ -346,7 +354,7 @@ export default ({
             {showSource && token?.market?.floorAsk?.source?.name ? (
                 
                 <img
-                  style={{width:26, borderRadius:'20px', marginLeft:'10px', position:'absolute', top:'7%'}}
+                  style={{width:26, borderRadius:'20px', marginLeft:'10px', position:'absolute', top:'7%', border:'2px solid white'}}
                   onClick={(e) => {
                     e.preventDefault();
                     e.stopPropagation();

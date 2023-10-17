@@ -54,12 +54,6 @@ const DropdownMenuItem = styled(DropdownMenuPrimitive.DropdownMenuItem, {
   borderRadius: 8,
   outline: 'none',
   cursor: 'pointer',
-  '&:hover': {
-    backgroundColor: '$gray5',
-  },
-  '&:focus': {
-    backgroundColor: '$gray5',
-  },
 })
 
 type Props = {

@@ -3,6 +3,11 @@ import { AnimatedOverlay, Content } from 'components/primitives/Dialog'
 import { useAccount, useDisconnect } from 'wagmi'
 import { useENSResolver } from 'hooks'
 import { Box, Button, Flex, Grid, Text } from 'components/primitives'
+import { DropdownMenu, DropdownMenuTrigger } from '@radix-ui/react-dropdown-menu'
+import {
+  DropdownMenuItem,
+  DropdownMenuContent,
+} from 'components/primitives/Dropdown'
 import { Avatar } from 'components/primitives/Avatar'
 import Image from 'next/image'
 // import ThemeSwitcher from './ThemeSwitcher'
@@ -48,7 +53,7 @@ export const AccountSidebar: FC = () => {
       }}
       corners="circle"
       type="button"
-      color="gray3"
+      color="avatarCircle"
     >
       {ensAvatar ? (
         <Avatar size="medium" src={ensAvatar} />
@@ -59,181 +64,28 @@ export const AccountSidebar: FC = () => {
   )
 
   return (
-    <DialogPrimitive.Root onOpenChange={setOpen} open={open}>
-      {trigger && (
-        <DialogPrimitive.DialogTrigger asChild>
-          {trigger}
-        </DialogPrimitive.DialogTrigger>
-      )}
-      <AnimatePresence>
-        {open && (
-          <DialogPrimitive.DialogPortal forceMount>
-            <AnimatedOverlay
-              css={{ backgroundColor: '$sidebarOverlay' }}
-              style={{ opacity: 0.6 }}
-            />
-            <Content
-              forceMount
-              asChild
-              css={{
-                right: 0,
-                top: 0,
-                bottom: 0,
-                transform: 'none',
-                left: 'unset',
-                width: 395,
-                maxWidth: 395,
-                minWidth: 395,
-                maxHeight: '100vh',
-                background: '$gray1',
-                border: 0,
-                borderRadius: 0,
-              }}
-            >
-              <motion.div
-                transition={{ type: 'tween', duration: 0.4 }}
-                initial={{
-                  opacity: 0,
-                  right: '-100%',
-                }}
-                animate={{
-                  opacity: 1,
-                  right: 0,
-                }}
-                exit={{
-                  opacity: 0,
-                  right: '-100%',
-                }}
-              >
-                <Flex direction="column" css={{ py: '$4', px: '$4' }}>
-                  <Button
-                    color="ghost"
-                    css={{ color: '$gray10', ml: 'auto', mr: 10 }}
-                    onClick={() => {
-                      setOpen(false)
-                    }}
-                  >
-                    <FontAwesomeIcon icon={faClose} height={18} width={18} />
-                  </Button>
-                  <Flex align="center" css={{ gap: '$3', ml: '$3' }}>
-                    {ensAvatar ? (
-                      <Avatar size="large" src={ensAvatar} />
-                    ) : (
-                      <Jazzicon
-                        diameter={52}
-                        seed={jsNumberForAddress(address as string)}
-                      />
-                    )}
-                    <CopyText
-                      text={address || ''}
-                      css={{ width: 'max-content' }}
-                    >
-                      <Flex direction="column">
-                        <Flex
-                          align="center"
-                          css={{
-                            gap: 8,
-                            color: '$gray11',
-                            cursor: 'pointer',
-                          }}
-                        >
-                          <Text style="h3">
-                            {shortEnsName ? shortEnsName : shortAddress}
-                          </Text>
-                          {!shortEnsName ? (
-                            <FontAwesomeIcon
-                              icon={faCopy}
-                              width={12}
-                              height={14}
-                            />
-                          ) : null}
-                        </Flex>
-                        {shortEnsName ? (
-                          <Flex
-                            align="center"
-                            css={{
-                              gap: 8,
-                              color: '$gray11',
-                              cursor: 'pointer',
-                            }}
-                          >
-                            <Text style="body2" color="subtle">
-                              {shortAddress}
-                            </Text>
-                            <FontAwesomeIcon
-                              icon={faCopy}
-                              width={12}
-                              height={12}
-                            />
-                          </Flex>
-                        ) : null}
-                      </Flex>
-                    </CopyText>
-                  </Flex>
-                  <Grid css={{ gridTemplateColumns: '1fr 1fr', mt: 32 }}>
-                    <Link href="/portfolio?tab=items" replace={true}>
-                      <Flex
-                        align="center"
-                        css={{
-                          gap: 6,
-                          p: '$3',
-                          color: '$gray10',
-                          cursor: 'pointer',
-                        }}
-                      >
-                        <FontAwesomeIcon icon={faStore} />
-                        <Text style="body1">My Gals</Text>
-                      </Flex>
-                    </Link>
-                    <Link href="/portfolio?tab=listings" replace={true}>
-                      <Flex
-                        align="center"
-                        css={{
-                          gap: 6,
-                          p: '$3',
-                          color: '$gray10',
-                          cursor: 'pointer',
-                        }}
-                      >
-                        
-                        
-                        
-                      </Flex>
-                    </Link>
-                  </Grid>
-                  {/*<Wallet />*/}
-
-                  <Flex
-                    css={{ m: 'auto' }}
-                    justify="between"
-                    align="center"
-                  >
-                     <Image
-                src={GalverseLogo}
-                width={376}
-                height={300}
-                alt="Galverse"
-              />
-                  {/*  <Text style="body1" css={{ mb: '$2', flex: 1 }} as="p">
-                      Theme
-                    </Text>
-                    <ThemeSwitcher /> */}
-                  </Flex>
-                 
-                  <Button
-                    size="large"
-                    css={{ my: '$4', justifyContent: 'center', cursor: 'pointer', fontFamily: 'SFCompactThin', textTransform: 'uppercase' }}
-                    color="gray3"
-                    onClick={() => disconnect()}
-                  >
-                    Log Out
-                  </Button>
-                </Flex>
-              </motion.div>
-            </Content>
-          </DialogPrimitive.DialogPortal>
+    <DropdownMenu>
+      {/* Trigger */}
+      <DropdownMenuTrigger asChild>
+        {ensAvatar ? (
+          <Avatar size="large" src={ensAvatar} />
+        ) : (
+          <Jazzicon
+            diameter={52}
+            seed={jsNumberForAddress(address as string)}
+          />
         )}
-      </AnimatePresence>
-    </DialogPrimitive.Root>
-  )
+      </DropdownMenuTrigger>
+  
+      {/* Content */}
+      <DropdownMenuContent style={{fontFamily: 'SF Pro Display', padding: '20px 20px 4px 20px', textTransform: 'uppercase', textAlign: 'left'}}>
+        <DropdownMenuItem style={{marginTop: '16px'}} asChild>
+          <Link href={`/portfolio/${address}`} legacyBehavior>
+            <a>My Collection</a>
+          </Link>
+        </DropdownMenuItem>
+        <DropdownMenuItem style={{padding:'16px 0px'}} onSelect={() => disconnect()}>Disconnect</DropdownMenuItem>
+      </DropdownMenuContent>
+    </DropdownMenu>
+  );
 }

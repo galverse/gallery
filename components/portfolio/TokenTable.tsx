@@ -102,6 +102,7 @@ export const TokenTable = forwardRef<TokenTableRef, Props>(
     const client = useReservoirClient()
     const [acceptBidModalOpen, setAcceptBidModalOpen] = useState(false)
     const isSmallDevice = useMediaQuery({ maxWidth: 900 })
+    const isMedDevice = useMediaQuery({ maxWidth: 1000 })
 
     const [playingElement, setPlayingElement] = useState<
       HTMLAudioElement | HTMLVideoElement | null
@@ -135,6 +136,8 @@ export const TokenTable = forwardRef<TokenTableRef, Props>(
       revalidateOnMount: true,
       fallbackData: [],
     })
+
+    
 
     useEffect(() => {
       mutate()
@@ -182,30 +185,34 @@ export const TokenTable = forwardRef<TokenTableRef, Props>(
     }))
 
  
-      return (
+    return (
       <>
         {!isValidating && !isFetchingPage && tokens && tokens.length === 0 ? (
           <div style={{ background: '$gray3' }}>
-    <Flex
-        direction="column" // default to column for smaller screens
-        align="start"
-        css={{
-            py: '$6', 
-            px: '$5', 
-            gap: '$4', 
-            width: '100%', 
-            background: '$shadow', 
-            borderRadius: '24px',
-            '@md': { // breakpoint for medium screens (>= 900px)
-                flexDirection: 'row',
-            }
-        }}
-    >
+            <Flex
+              direction="column"
+              align="start"
+              css={{
+                py: '$2',
+                px: '$5',
+                gap: '$4',
+                marginTop: '-50px',
+                width: '100%',
+                background: '$shadow',
+                borderRadius: '24px',
+                position: 'relative',  // Added this line
+                '@bp1000': {
+                  flexDirection: 'row',
+                  marginTop: '60px',
+                }
+              }}
+            >
+    
         <Flex
             direction="column"
             align="start"
             css={{
-                py: '$6', 
+                py: '50px', 
                 px: '$5', 
                 gap: '$4', 
                 width: '100%', 
@@ -238,7 +245,7 @@ export const TokenTable = forwardRef<TokenTableRef, Props>(
                     fontFamily: 'Space Mono',  
                     fontSize: '14px', 
                     lineHeight: '23.68px',
-                    '@md': { // breakpoint for medium screens (>= 900px)
+                    '@bp1000': { // breakpoint for medium screens (>= 900px)
                         fontSize: '16px',
                     }
                 }}
@@ -253,14 +260,29 @@ export const TokenTable = forwardRef<TokenTableRef, Props>(
             </Link>
         </Flex>
         
-        <Image 
-            src={EmptyStateGal} 
-            alt="Galverse Gal" 
-            width={355} 
-            height={346}
-        />
-    </Flex>
-</div>
+        {/* Adjusted Image positioning */}
+        <Image
+    src={EmptyStateGal}
+    alt="Galverse Gal"
+    width={355}
+    height={346}
+    style={
+      isMedDevice ? 
+        { // Styles for screens <= 900px
+            position: 'relative',
+            right: '80px',
+            top: '20px',
+        } : 
+        { // Styles for screens > 900px
+            position: 'absolute',
+            right: '0%',
+            bottom: '-4%',
+            zIndex: 1
+        }
+    }
+/>
+        </Flex>
+      </div>
         ) : (
           <Flex direction="column" css={{ width: '100%' }}>
             {isLoading ? null : itemView === 'grid' ? (

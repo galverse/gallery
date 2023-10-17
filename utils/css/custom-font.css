@@ -18,6 +18,10 @@
     src: url('/fonts/SF-Pro-Display.otf') format('opentype');
   }
   @font-face {
+    font-family: 'SF Pro Display Bold';
+    src: url('/fonts/SF-Pro-Display-Bold.otf') format('opentype');
+  }
+  @font-face {
     font-family: 'Bureau_Grot_Extra_Compressed_Light';
     src: url('/fonts/Bureau_Grot_Extra_Compressed_Light.otf') format('opentype');
   }

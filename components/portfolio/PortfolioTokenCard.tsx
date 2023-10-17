@@ -131,14 +131,15 @@ export default ({
         overflow: 'hidden',
         background: '$neutralBgSubtle',
         $$shadowColor: '$colors$panelShadow',
-        boxShadow: '0px 6px 12px 0px rgba(0, 0, 0, 0.11), 0px 23px 23px 0px rgba(0, 0, 0, 0.09), 0px 51px 31px 0px rgba(0, 0, 0, 0.05), 0px 90px 36px 0px rgba(0, 0, 0, 0.02), 0px 141px 40px 0px rgba(0, 0, 0, 0.00)',
         position: 'relative',
-        '&:hover > a > div > img': {
-          transform: 'scale(1.02)',
+        transition: 'transform .3s ease-in-out',  // Transition for the scaling effect
+        '&:hover': {
+          transform: 'scale(1.02)',  // Scale the entire box on hover
+          boxShadow: '0px 6px 12px 0px rgba(0, 0, 0, 0.11), 0px 23px 23px 0px rgba(0, 0, 0, 0.09), 0px 51px 31px 0px rgba(0, 0, 0, 0.05), 0px 90px 36px 0px rgba(0, 0, 0, 0.02), 0px 141px 40px 0px rgba(0, 0, 0, 0.00)'
         },
         '@sm': {
           '&:hover .token-button-container': {
-            bottom: 0,
+            
           },
         },
       }}
@@ -211,16 +212,18 @@ export default ({
         href={`https://www.galverse.art/gal/${token?.token?.tokenId}`}
       >
         <Box 
-          css={{ 
-            position: 'relative', 
-            background: '$gray3', 
-            overflow: 'hidden', 
-            transition: 'all 0.9s ease-in-out',
-            '&:hover > div': { // Target all direct child `div` elements (overlays) when the Box is hovered
-              opacity: 1
-            }
-          }}
-        >
+  css={{ 
+    position: 'relative', 
+    background: '$gray3', 
+    overflow: 'hidden', 
+    transition: 'all 0.9s ease-in-out',
+    '&:hover > div': { // Target all direct child `div` elements (overlays) when the Box is hovered
+      opacity: 1,
+      scale: '1.02',
+      
+    }
+  }}
+>
           <TokenMedia
             token={dynamicToken?.token}
             style={{
@@ -275,7 +278,10 @@ export default ({
         opacity: 0,  // Fully transparent by default
         transition: 'opacity 0.3s ease-in-out',
         '&:hover': {
-          opacity: 1  // Reveal the gradient on hover
+          opacity: 1,  // Reveal the gradient on hover
+          
+          boxShadow: '0px 6px 12px 0px rgba(0, 0, 0, 0.11), 0px 23px 23px 0px rgba(0, 0, 0, 0.09), 0px 51px 31px 0px rgba(0, 0, 0, 0.05), 0px 90px 36px 0px rgba(0, 0, 0, 0.02), 0px 141px 40px 0px rgba(0, 0, 0, 0.00)',
+          
         }
     }}>
         {/* Overlay Text */}
@@ -288,6 +294,7 @@ export default ({
                 transform: 'translate(-50%, -50%)',
                 opacity: 0,  // Hidden by default
                 transition: 'opacity 0.3s ease-in-out',
+                scale: '1.02',
                 '&:hover': {
                     opacity: 1,  // Show on hover
                 }

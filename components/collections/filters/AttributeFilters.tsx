@@ -92,29 +92,44 @@ const debouncedSearch = useDebounce(tokenSearchQuery, 500)
     >
       {/* Search Bar */}
       <Box
-        css={{ backgroundColor: '$neutralBg', position: 'relative', flex: 1, maxWidth: 420, marginBottom: '$3', borderBottom: '1px solid var(--colors-gray7)' }}
-      >
-        <Box
-          css={{
-            backgroundColor: '$neutralBg',
-            position: 'absolute',
-            top: '50%',
-            zIndex: 1,
-            transform: 'translate(0, -50%)',
-            color: '$neutralBg',
-          }}
-        >
-          <Image src={SearchIcon} alt="Search Icon" />
-        </Box>
-        <Input
-          css={{ fontFamily: 'SFCompactMedium', pl: 48, backgroundColor: '$neutralBg', $$focusColor: 'none !important', }}
-          placeholder="Find by token ID..."
-          onChange={(e) => {
-            setTokenSearchQuery(e.target.value);
-          }}
-          value={tokenSearchQuery}
-        />
-      </Box>
+  css={{
+    backgroundColor: '$neutralBg',
+    position: 'relative',
+    flex: 1,
+    maxWidth: 420,
+    marginBottom: '$3',
+    borderBottom: '1px solid var(--colors-gray7)',
+  }}
+>
+  <Box
+    css={{
+      backgroundColor: '$neutralBg',
+      position: 'absolute',
+      top: '50%',
+      zIndex: 1,
+      transform: 'translate(0, -50%)',
+      color: '$neutralBg',
+    }}
+  >
+    {/* Conditionally render the Image component based on the 'open' prop */}
+    {open && (
+      <Image src={SearchIcon} alt="Search Icon" style={{ marginLeft: '4px' }} />
+    )}
+  </Box>
+  <Input
+    css={{
+      fontFamily: 'SFCompactMedium',
+      pl: 48,
+      backgroundColor: '$neutralBg',
+      $$focusColor: 'none !important',
+    }}
+    placeholder="Find by token ID..."
+    onChange={(e) => {
+      setTokenSearchQuery(e.target.value);
+    }}
+    value={tokenSearchQuery}
+  />
+</Box>
       <CollapsibleContent
         css={{
           position: 'sticky',
