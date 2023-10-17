@@ -275,7 +275,7 @@ export default ({
         css={{
           fontFamily: "BureauGrotCondensedBook",
           fontWeight: 350,
-          fontSize: '16px',  // default for small screens
+          fontSize: '28px',  // default for small screens
             '@md': {
             fontSize:'24px',  // adjusted for medium screens (>= 900px)
             },
@@ -286,7 +286,7 @@ export default ({
             fontSize: '22px',  // adjusted for extra large screens (>= 1820px)
             },
             position: 'absolute',
-          top: '72%',
+          top: '78%',
           width: '100%',
           textAlign: 'center',
           whiteSpace: 'nowrap',
@@ -302,13 +302,13 @@ export default ({
     css={{
         fontFamily: "SourceSans3-Regular",
         position: 'absolute',
-        top: '82%',
+        top: '86%',
         left: '5%',
         width: '100%',
         textAlign: 'center',
         fontWeight: 600,
         letterSpacing: '3%',
-        fontSize: '10px',  // default for small screens
+        fontSize: '16px',  // default for small screens
             '@md': {
             fontSize: '18px',  // adjusted for medium screens (>= 900px)
             },

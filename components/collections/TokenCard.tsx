@@ -299,18 +299,21 @@ export default ({
                     css={{
                       fontFamily: "BureauGrotCondensedBook",
                       fontWeight: 350,
-                      fontSize: isDense ? '22px' : '16px',  // default for small screens
+                      fontSize: isDense ? '28px' : '16px',  // default for small screens
                         '@md': {
-                        fontSize: isDense ? '36px' : '24px',  // adjusted for medium screens (>= 900px)
+                        top: isDense ? '76%' :'70%',
+                        fontSize: isDense ? '34px' : '20px',  // adjusted for medium screens (>= 900px)
                         },
                         '@lg': {
+                        top: isDense ? '79%' :'84%',
                         fontSize: isDense ? '42px' : '20px',  // adjusted for large screens (>= 1200px)
                         },
                         '@xl': {
-                        fontSize: isDense ? '38px' : '22px',  // adjusted for extra large screens (>= 1820px)
+                        fontSize: isDense ? '34px' : '20px',  // adjusted for extra large screens (>= 1820px)
                         },
                         position: 'absolute',
-                      top: '74%',
+                      
+                      top: isDense ? '80%' :'74%',
                       width: '100%',
                       textAlign: 'center',
                       whiteSpace: 'nowrap',
@@ -325,8 +328,6 @@ export default ({
                 as="p"
                 css={{
                     fontFamily: "SourceSans3-Regular",
-                    position: 'absolute',
-                    top: '84%',
                     left: '5%',
                     width: '100%',
                     textAlign: 'center',
@@ -334,14 +335,19 @@ export default ({
                     letterSpacing: '3%',
                     fontSize: isDense ? '16px' : '10px',  // default for small screens
                         '@md': {
-                        fontSize: isDense ? '28px' : '18px',  // adjusted for medium screens (>= 900px)
+                        top: isDense ? '86%' :'84%',
+                        fontSize: isDense ? '22px' : '15px',  // adjusted for medium screens (>= 900px)
                         },
                         '@lg': {
-                        fontSize: isDense ? '32px' : '20px',  // adjusted for large screens (>= 1200px)
+                        top: isDense ? '86%' :'84%',
+                        fontSize: isDense ? '24px' : '15px',  // adjusted for large screens (>= 1200px)
                         },
                         '@xl': {
-                        fontSize: isDense ? '28px' : '18px',  // adjusted for extra large screens (>= 1820px)
+                        top: isDense ? '76%' :'74%',
+                        fontSize: isDense ? '22px' : '15px',  // adjusted for extra large screens (>= 1820px)
                         },
+                    position: 'absolute',
+                    top: isDense ? '88%' :'84%',
                     color: '$gray11',
                     margin: 'auto',
                     maxWidth: '90%',
