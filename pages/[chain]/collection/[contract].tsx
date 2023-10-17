@@ -727,7 +727,7 @@ const CollectionPage: NextPage<Props> = ({ id, ssr }) => {
                         gap: '$4',
                         pb: '$6',
                         gridTemplateColumns: isSmallDevice 
-                          ? (isDense ? 'repeat(auto-fill, minmax(170px, 1fr))' : 'repeat(auto-fill, minmax(120px, 1fr))')
+                          ? (isDense ? 'repeat(auto-fill, minmax(240px, 1fr))' : 'repeat(auto-fill, minmax(120px, 1fr))')
                           : (isDense ? 'repeat(auto-fill, minmax(320px, 1fr))' : 'repeat(auto-fill, minmax(180px, 1fr))'),
                       }}
                     >

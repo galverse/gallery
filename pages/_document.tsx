@@ -22,6 +22,7 @@ class MyDocument extends Document {
             id="stitches"
             dangerouslySetInnerHTML={{ __html: getCssText() }}
           />
+          <link rel="stylesheet" href="/utils/css/custom-font.css" />
         </Head>
 
         <meta charSet="utf-8" />

@@ -314,7 +314,7 @@ export const darkTheme = createTheme({
     shadowText: '#FAFAFA',
 
     neutralBgSubtle: '$gray3',
-    neutralBg: '$gray1',
+    neutralBg: '#161616',
 
     panelBg: '$gray3',
     panelBorder: '$slate7',

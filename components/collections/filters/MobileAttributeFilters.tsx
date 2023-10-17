@@ -148,7 +148,7 @@ export const MobileAttributeFilters: FC<Props> = ({
                 onClick={() => clearAllAttributes(router)}
                 color="ghost"
                 size="small"
-                css={{ color: '$primary11', fontWeight: 400 }}
+                css={{ color: '$primary11', fontWeight: 400, fontSize: '20px', textTransform: 'uppercase' }}
               >
                 Clear all
               </Button>

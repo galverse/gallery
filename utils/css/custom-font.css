@@ -4,69 +4,86 @@
 @font-face {
     font-family: 'BureauGrot';
     src: url('/fonts/BureauGrot.otf') format('opentype');
+    font-display: swap;  
   }
   @font-face {
     font-family: 'SFCompactMedium';
     src: url('/fonts/sf-compact-medium.otf') format('opentype');
+    font-display: swap;  
   }
   @font-face {
     font-family: 'SFCompactThin';
     src: url('/fonts/sf-compact-thin.otf') format('opentype');
+    font-display: swap;  
   }
   @font-face {
     font-family: 'SF Pro Display';
     src: url('/fonts/SF-Pro-Display.otf') format('opentype');
+    font-display: swap;  
   }
   @font-face {
     font-family: 'SF Pro Display Bold';
     src: url('/fonts/SF-Pro-Display-Bold.otf') format('opentype');
+    font-display: swap;  
   }
   @font-face {
     font-family: 'Bureau_Grot_Extra_Compressed_Light';
     src: url('/fonts/Bureau_Grot_Extra_Compressed_Light.otf') format('opentype');
+    font-display: swap;  
   }
   @font-face {
     font-family: 'Bureau_Grot_Ultra_Black';
     src: url('/fonts/Bureau_Grot_Ultra_Black.otf') format('opentype');
+    font-display: swap;  
   }
   @font-face {
     font-family: 'Bureau_Grot_Wide_Ultra_Black';
     src: url('/fonts/Bureau_Grot_Wide_Ultra_Black.otf') format('opentype');
+    font-display: swap;  
   }
   @font-face {
     font-family: 'bureauGrotCondensedBlack';
     src: url('/fonts/bureauGrotCondensedBlack.otf') format('opentype');
+    font-display: swap;  
   }
   @font-face {
     font-family: 'bureauGrotCondensedBook';
     src: url('/fonts/bureauGrotCondensedBook.otf') format('opentype');
+    font-display: swap;  
   }
   @font-face {
     font-family: 'bureauGrotMedium';
     src: url('/fonts/bureauGrotMedium.otf') format('opentype');
+    font-display: swap;  
   }
   @font-face {
     font-family: 'AldotheApache';
     src: url('/fonts/AldotheApache.ttf') format('truetype');
+    font-display: swap;  
   }
   @font-face {
     font-family: 'SourceSans3-Regular';
     src: url('/fonts/SourceSans3-Regular.ttf') format('truetype');
+    font-display: swap;  
   }
   @font-face {
     font-family: 'DigitalNumbers-Regular';
     src: url('/fonts/DigitalNumbers-Regular.woff') format('woff');
+    font-display: swap;  
   }
   @font-face {
     font-family: 'HiraKakuStd-W8';
     src: url('/fonts/HiraKakuStd-W8.woff') format('woff');
+    font-display: swap;  
   }
   @font-face {
     font-family: 'Space Mono';
     src: url('https://fonts.googleapis.com/css2?family=Space+Mono&display=swap');
+    font-display: swap;  
   }
 
   body {
     font-family: 'BureauGrot', sans-serif;
+    
   }
   

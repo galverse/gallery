@@ -310,7 +310,7 @@ export default ({
                         fontSize: isDense ? '38px' : '22px',  // adjusted for extra large screens (>= 1820px)
                         },
                         position: 'absolute',
-                      top: '72%',
+                      top: '74%',
                       width: '100%',
                       textAlign: 'center',
                       whiteSpace: 'nowrap',
@@ -326,7 +326,7 @@ export default ({
                 css={{
                     fontFamily: "SourceSans3-Regular",
                     position: 'absolute',
-                    top: '82%',
+                    top: '84%',
                     left: '5%',
                     width: '100%',
                     textAlign: 'center',

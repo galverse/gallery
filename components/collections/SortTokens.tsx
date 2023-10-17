@@ -86,7 +86,9 @@ export const SortTokens: FC<Props> = ({ css }) => {
   css={{
     fontFamily: 'SFCompactMedium',
     textTransform: 'uppercase',
-    padding: isSmallDevice ? '8px' : undefined
+    padding: isSmallDevice ? '8px' : undefined,
+    position: isSmallDevice ? 'relative' : undefined,
+    left: isSmallDevice ? '14px' : undefined
   }}
 >
   { !isSmallDevice && <span>{sortSelection}</span> }

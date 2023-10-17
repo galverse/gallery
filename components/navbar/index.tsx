@@ -2,6 +2,7 @@
 // import MobileSearch from './MobileSearch'
 // import CartButton from './CartButton'
 import { useRef } from 'react'
+import { styled } from 'stitches.config';
 import { Box, Flex, Card } from '../primitives'
 import backNav from 'public/icons/ux/back-nav.svg'
 import { useRouter } from 'next/router'
@@ -37,6 +38,15 @@ const Navbar = () => {
     href: string;
     target: "_blank" | "_self";
 };
+
+const HoverableImageWrapper = styled('div', {
+  '& img': {
+    transition: 'filter 0.3s',
+    '&:hover': {
+      filter: 'brightness(1.1)',  // This will brighten the image by 10% on hover
+    },
+  },
+});
 
 
 //  let searchRef = useRef<HTMLInputElement>(null)
@@ -83,7 +93,8 @@ if (router.pathname.startsWith("/portfolio")) {
       <Box css={{ flex: 1 }}>
         <Flex align="center">
         <Link legacyBehavior href={backButtonProps.href} passHref>
-        <a target={backButtonProps.target}>
+      <a target={backButtonProps.target}>
+        <HoverableImageWrapper>
           <Image
             src={backNav}
             width={13}
@@ -91,13 +102,17 @@ if (router.pathname.startsWith("/portfolio")) {
             alt="Back Navigation"
             style={{ marginRight: '10px', marginTop: '10px' }}
           />
-        </a>
-      </Link>
+        </HoverableImageWrapper>
+      </a>
+    </Link>
           <Link href={`/${routePrefix}`}>
-            <Box css={{ width: 200, cursor: 'pointer' }}>
+            <Box css={{ width: 200, cursor: 'pointer',
+            transition: 'transform .3s ease-in-out',
+            '&:hover': {
+          transform: 'scale(1.1)'}}}>
               <Image
                 src={GalverseLogo}
-                width={128}
+                width={130}
                 height={40}
                 alt="Galverse"
               />
@@ -143,8 +158,9 @@ if (router.pathname.startsWith("/portfolio")) {
         }}
       >
         <Flex align="center">
-              <Link legacyBehavior href={backButtonProps.href} passHref>
-        <a target={backButtonProps.target}>
+        <Link legacyBehavior href={backButtonProps.href} passHref>
+      <a target={backButtonProps.target}>
+        <HoverableImageWrapper>
           <Image
             src={backNav}
             width={17.25}
@@ -152,10 +168,13 @@ if (router.pathname.startsWith("/portfolio")) {
             alt="Back Navigation"
             style={{ marginRight: '10px', marginTop: '10px' }}
           />
-        </a>
-      </Link>
+        </HoverableImageWrapper>
+      </a>
+    </Link>
           <Link href={`/${routePrefix}`}>
-            <Box css={{ cursor: 'pointer', alignItems: 'flex-start' }}>
+            <Box css={{ cursor: 'pointer', alignItems: 'flex-start',transition: 'transform .3s ease-in-out',
+            '&:hover': {
+          transform: 'scale(1.1)'}}}>
               <Image
                 src={GalverseLogo}
                 width={130}
