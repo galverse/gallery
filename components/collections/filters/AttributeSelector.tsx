@@ -62,15 +62,18 @@ console.log('Icon Source:', attributeIcons[attributeNameToFilename(attribute.key
 
 const transformedKey = attributeNameToFilename(attribute.key);
 
-  const sortedAttributes = useMemo(() => {
-    return attribute?.values?.sort((a, b) => {
-      if (!a.count || !b.count) {
-        return 0
-      } else {
-        return b.count - a.count
-      }
-    })
-  }, [attribute])
+const sortedAttributes = useMemo(() => {
+  return attribute?.values?.sort((a, b) => {
+    // Assuming 'name' is the field you want to sort by.
+    // Replace 'name' with the appropriate field if it's different.
+    if (a.value && b.value) {
+      return a.value.localeCompare(b.value);
+    } else {
+      return 0;
+    }
+  })
+}, [attribute])
+
 
   const AttributeRow: FC<{ index: number; style: CSSProperties }> = ({ index, style }) => {
     console.log("Rendering AttributeRow");
