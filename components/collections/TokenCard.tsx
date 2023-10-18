@@ -299,21 +299,25 @@ export default ({
                     css={{
                       fontFamily: "BureauGrotCondensedBook",
                       fontWeight: 350,
+                      top: isDense ? '80%' :'74%',
                       fontSize: isDense ? '28px' : '16px',  // default for small screens
                         '@md': {
                         top: isDense ? '76%' :'70%',
                         fontSize: isDense ? '34px' : '20px',  // adjusted for medium screens (>= 900px)
                         },
+                        '@bp960': {
+                          top: isDense ? '82%' :'80%',
+                          fontSize: isDense ? '34px' : '20px',  // adjusted for medium screens (>= 900px)
+                          },
                         '@lg': {
-                        top: isDense ? '79%' :'84%',
+                        top: isDense ? '79%' :'77%',
                         fontSize: isDense ? '42px' : '20px',  // adjusted for large screens (>= 1200px)
                         },
                         '@xl': {
+                          top: isDense ? '79%' :'76%',
                         fontSize: isDense ? '34px' : '20px',  // adjusted for extra large screens (>= 1820px)
                         },
                         position: 'absolute',
-                      
-                      top: isDense ? '80%' :'74%',
                       width: '100%',
                       textAlign: 'center',
                       whiteSpace: 'nowrap',
@@ -333,21 +337,26 @@ export default ({
                     textAlign: 'center',
                     fontWeight: 600,
                     letterSpacing: '3%',
+                    top: isDense ? '88%' :'86%',
                     fontSize: isDense ? '16px' : '10px',  // default for small screens
                         '@md': {
                         top: isDense ? '86%' :'84%',
-                        fontSize: isDense ? '22px' : '15px',  // adjusted for medium screens (>= 900px)
+                        fontSize: isDense ? '22px' : '12px',  // adjusted for medium screens (>= 900px)
                         },
+                        '@bp960': {
+                          top: isDense ? '90%' :'88%',
+                          fontSize: isDense ? '22px' : '14px',  // adjusted for medium screens (>= 900px)
+                          },
                         '@lg': {
                         top: isDense ? '86%' :'84%',
                         fontSize: isDense ? '24px' : '15px',  // adjusted for large screens (>= 1200px)
                         },
                         '@xl': {
-                        top: isDense ? '76%' :'74%',
+                        top: isDense ? '88%' :'86%',
                         fontSize: isDense ? '22px' : '15px',  // adjusted for extra large screens (>= 1820px)
                         },
                     position: 'absolute',
-                    top: isDense ? '88%' :'84%',
+                    
                     color: '$gray11',
                     margin: 'auto',
                     maxWidth: '90%',

@@ -238,6 +238,7 @@ export const { createTheme, keyframes, styled, globalCss, getCssText } =
       bp700: '(min-width: 700px)',
       bp800: '(min-width: 800px)',
       bp900: '(min-width: 900px)',
+      bp960: '(min-width: 960px)',
       bp1000: '(min-width: 1000px)',
       bp1100: '(min-width: 1100px)',
       bp1200: '(min-width: 1200px)',
