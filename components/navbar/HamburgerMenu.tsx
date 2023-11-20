@@ -61,7 +61,7 @@ const HamburgerMenu = () => {
       </DropdownMenuTrigger>
       <DropdownMenuContent style={{fontFamily: 'SF Pro Display', padding: '20px 20px 4px 20px', textTransform: 'uppercase', textAlign: 'left'}}>
         <DropdownMenuItem style={{marginTop: '16px'}} asChild>
-          <Link href={`/portfolio/${address}`} legacyBehavior>
+          <Link href={`/portfolio/${address}?tab=items`} legacyBehavior>
             <a >My Collection</a>
           </Link>
         </DropdownMenuItem>
