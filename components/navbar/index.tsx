@@ -54,7 +54,7 @@ const HoverableImageWrapper = styled('div', {
   const router = useRouter()
   const backButtonProps: BackButtonProps = {
     href: "https://galverse.art", // default value
-    target: "_blank" // default value
+    target: "_self" // default value
 };
 
 if (router.pathname.startsWith("/portfolio")) {
